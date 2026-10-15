@@ -1,0 +1,102 @@
+import type { RoleTaxonomyOption } from '../types';
+
+export const ROLE_TAXONOMY: RoleTaxonomyOption[] = [
+  {
+    role: 'Product Manager',
+    family: 'Product Management',
+    commonAdjacent: ['Product Operations Specialist', 'Business Analyst', 'Technical Project Coordinator', 'Product Growth Specialist'],
+    suggestedCapabilities: [
+      'User Research & Discovery',
+      'Requirements Documentation (PRD)',
+      'Roadmap Prioritisation',
+      'Cross-functional Team Leadership',
+      'Stakeholder Management',
+      'A/B Testing & Experimentation',
+      'Product Analytics & KPI Tracking',
+      'Agile Sprint Planning',
+    ],
+  },
+  {
+    role: 'Product Operations Specialist',
+    family: 'Product Operations',
+    commonAdjacent: ['Product Manager', 'Business Analyst', 'Implementation Specialist', 'Customer Insights Analyst'],
+    suggestedCapabilities: [
+      'Process Documentation & Standardization',
+      'Product Tech Stack Administration',
+      'Cross-team Communication Cadence',
+      'User Feedback Synthesis',
+      'Feature Launch Coordination',
+      'Data Cleanliness & Metric Auditing',
+      'Workflow Automation',
+      'Vendor & Tool Management',
+    ],
+  },
+  {
+    role: 'Business Analyst',
+    family: 'Business Analysis',
+    commonAdjacent: ['Product Manager', 'Technical Project Coordinator', 'Product Operations Specialist', 'Data Analyst'],
+    suggestedCapabilities: [
+      'Business Process Mapping',
+      'Requirements Gathering & Functional Specs',
+      'Stakeholder Interviewing',
+      'Data Modeling & SQL Queries',
+      'Acceptance Criteria Definition',
+      'Gap Analysis',
+      'Cost-Benefit Analysis',
+      'Workflow Optimization',
+    ],
+  },
+  {
+    role: 'Technical Project Coordinator',
+    family: 'Technical Project Management',
+    commonAdjacent: ['Product Operations Specialist', 'Scrum Master', 'Product Manager', 'Implementation Specialist'],
+    suggestedCapabilities: [
+      'Sprint Schedule Coordination',
+      'Issue & Dependency Tracking',
+      'Technical Documentation',
+      'Release Readiness Management',
+      'Cross-team Sync Facilitation',
+      'Risk Assessment & Mitigation',
+      'Jira / Linear Workflow Configuration',
+      'Vendor Coordination',
+    ],
+  },
+  {
+    role: 'Product Growth Specialist',
+    family: 'Product Management',
+    commonAdjacent: ['Product Manager', 'Product Marketing Specialist', 'Product Analytics Specialist'],
+    suggestedCapabilities: [
+      'Funnel Drop-off Analysis',
+      'Growth Experiment Design',
+      'Onboarding Flow Optimization',
+      'Customer Retention Strategy',
+      'Quantitative Analytics (Mixpanel / Amplitude)',
+      'Behavioral Cohort Tracking',
+      'Lifecycle Messaging Automation',
+    ],
+  },
+  {
+    role: 'Implementation Specialist',
+    family: 'Solutions & Customer Ops',
+    commonAdjacent: ['Product Operations Specialist', 'Business Analyst', 'Technical Project Coordinator'],
+    suggestedCapabilities: [
+      'Client Onboarding Architecture',
+      'Integration Testing & Troubleshooting',
+      'Workflow Customization',
+      'API & Webhook Troubleshooting',
+      'User Training & Documentation',
+      'Escalation Root-Cause Analysis',
+    ],
+  },
+];
+
+export const CREATIVE_INTEREST_SUGGESTIONS = [
+  'Voiceover & Audio Narration',
+  'Technical Illustration & Diagrams',
+  'Creative Writing & Storyboarding',
+  'Podcast Production & Interviewing',
+  'Visual Design & Typography',
+  'Community Building & Event Hosting',
+  'Game Design & Mechanics',
+  'Hardware Tinkering & IoT',
+];
