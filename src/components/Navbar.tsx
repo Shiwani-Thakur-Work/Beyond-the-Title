@@ -48,7 +48,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   Beyond the Title
                 </span>
                 <span className="hidden sm:inline-block ml-2 px-2 py-0.5 text-[11px] font-semibold tracking-wide uppercase bg-indigo-50 text-indigo-700 rounded-md border border-indigo-100">
-                  MVP Demo
+                  Personal Project
                 </span>
               </div>
             </button>
@@ -131,7 +131,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="relative flex items-center gap-2">
             <div className="hidden sm:flex items-center gap-1.5 text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Private Demo (Browser Only)</span>
+              <span>Private • Stored Locally</span>
             </div>
 
             <div className="relative">
@@ -139,8 +139,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 id="data-controls-btn"
                 onClick={() => setShowDataMenu(!showDataMenu)}
                 className="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors"
-                title="Demo Data Controls"
-                aria-label="Demo Data Controls"
+                title="Data & Storage Controls"
+                aria-label="Data & Storage Controls"
               >
                 <RefreshCw className="w-4 h-4" />
               </button>
@@ -148,7 +148,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               {showDataMenu && (
                 <div className="absolute right-0 mt-2 w-56 bg-white border border-slate-200 rounded-xl shadow-xl py-2 z-50 text-sm">
                   <div className="px-3 py-1.5 border-b border-slate-100 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                    Demo Storage Controls
+                    Data & Storage Controls
                   </div>
                   <button
                     onClick={handleExport}
@@ -165,7 +165,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     className="w-full text-left px-4 py-2 hover:bg-rose-50 text-rose-600 flex items-center gap-2"
                   >
                     <Trash2 className="w-4 h-4 text-rose-500" />
-                    Reset All Demo Data
+                    Reset Stored Data
                   </button>
                 </div>
               )}

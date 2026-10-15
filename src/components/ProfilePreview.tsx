@@ -23,7 +23,7 @@ export const ProfilePreview: React.FC<ProfilePreviewProps> = ({
       <div className="bg-emerald-50/90 border border-emerald-200 rounded-2xl p-4 mb-6 flex items-start gap-3 text-emerald-900 text-xs">
         <Lock className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
         <div>
-          <span className="font-bold">Private-by-default Demo:</span> This profile is stored strictly inside your browser’s local storage. It is not transmitted over network APIs or indexed by employers. You remain in complete control of your data.
+          <span className="font-bold">Private by Default:</span> Your profile is stored locally in your browser storage. It is not uploaded to any server or shared with external parties.
         </div>
       </div>
 
@@ -38,7 +38,7 @@ export const ProfilePreview: React.FC<ProfilePreviewProps> = ({
                   Multidirectional Candidate Profile
                 </span>
                 <span className="px-2 py-0.5 text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full flex items-center gap-1">
-                  <Shield className="w-3 h-3" /> Demo Sandbox
+                  <Shield className="w-3 h-3" /> Personal Project
                 </span>
               </div>
               <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">

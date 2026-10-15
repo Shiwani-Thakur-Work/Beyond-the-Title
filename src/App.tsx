@@ -199,7 +199,7 @@ export function App() {
         />
       )}
 
-      {/* Demo Data Management Modal */}
+      {/* Data Management Modal */}
       <DataResetModal
         isOpen={isResetModalOpen}
         onClose={() => setIsResetModalOpen(false)}
@@ -213,18 +213,18 @@ export function App() {
           <div className="flex items-center gap-2">
             <Compass className="w-4 h-4 text-indigo-600" />
             <span className="font-bold text-slate-800">Beyond the Title</span>
-            <span>• Multidirectional Opportunity Discovery MVP</span>
+            <span>• Multidirectional Opportunity Discovery • Personal Project</span>
           </div>
 
           <div className="flex items-center gap-4 text-xs">
             <span className="flex items-center gap-1 text-emerald-700">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-              100% Client-Side Demo
+              100% Client-Side • Stored Locally
             </span>
             <span>•</span>
-            <span>No Paid APIs</span>
+            <span>Zero Tracking</span>
             <span>•</span>
-            <span>Zero Data Scraping</span>
+            <span>Private by Default</span>
           </div>
         </div>
       </footer>

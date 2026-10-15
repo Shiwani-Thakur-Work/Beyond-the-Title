@@ -60,7 +60,7 @@ export const DataResetModal: React.FC<DataResetModalProps> = ({
         <div className="p-5 border-b border-slate-100 flex items-center justify-between">
           <div className="flex items-center gap-2 text-rose-600 font-bold text-base">
             <Trash2 className="w-5 h-5" />
-            <span>Manage Demo Data & Privacy</span>
+            <span>Manage Stored Data & Privacy</span>
           </div>
           <button
             onClick={onClose}
@@ -143,7 +143,7 @@ export const DataResetModal: React.FC<DataResetModalProps> = ({
             }}
             className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-xl transition-colors shadow-xs"
           >
-            Clear & Reset Demo Data
+            Clear & Reset Stored Data
           </button>
         </div>
       </div>

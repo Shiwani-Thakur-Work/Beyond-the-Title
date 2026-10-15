@@ -151,7 +151,7 @@ export const MethodologyView: React.FC = () => {
               <strong>Employer-side unvalidated:</strong> While candidate user interviews suggest strong appetite for showing adjacent directions, employer hiring manager willingness to accept non-linear titles remains an unvalidated hypothesis.
             </p>
             <p>
-              <strong>Fictional Curated Dataset:</strong> The current demonstration uses 10 curated listings across the Product & Technology family. Real-time web scraping, paid job board APIs, and automated resume uploads are intentionally out of scope for MVP v1.
+              <strong>Curated Industry Dataset:</strong> The project evaluates 12 curated industry opportunities across tier-one product organizations (Stripe, Linear, Notion, Figma, Spotify, Razorpay, Atlassian, Airbnb, Swiggy, Datadog, Duolingo, Canva) to demonstrate realistic capability matching.
             </p>
             <p>
               <strong>Local Browser Persistence:</strong> Data is saved in the browser’s `localStorage`. No server database or authentication is implemented in order to keep the project completely free, private, and deployable to static hosting tiers.
