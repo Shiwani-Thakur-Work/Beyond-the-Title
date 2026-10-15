@@ -3,7 +3,9 @@
 > **A Multidirectional Opportunity Discovery Web MVP**  
 > Helping job seekers represent multiple professional directions, transferable capabilities, and project evidence beyond rigid job titles.
 
-Built with **React**, **Vite**, **TypeScript**, and **Tailwind CSS**.
+🚀 **Live Web App:** [https://shiwani-thakur-work.github.io/Beyond-the-Title/](https://shiwani-thakur-work.github.io/Beyond-the-Title/)  
+📦 **GitHub Repository:** [https://github.com/Shiwani-Thakur-Work/Beyond-the-Title](https://github.com/Shiwani-Thakur-Work/Beyond-the-Title)  
+🛠️ **Built with:** React 19, Vite 8, TypeScript, and Tailwind CSS v4
 
 ---
 
