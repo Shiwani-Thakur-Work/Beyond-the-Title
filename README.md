@@ -28,7 +28,7 @@ Can a structured profile distinguishing **Primary Roles**, **Adjacent Roles**, *
 - **Core Framework:** React 19, Vite 8, TypeScript (strict mode, `verbatimModuleSyntax`).
 - **Styling:** Tailwind CSS v4 with custom badge tokens and responsive utility layouts.
 - **Data Persistence:** Browser `localStorage` (Profile drafts, Saved opportunities, Relevance feedback).
-- **Data Fixtures:** 10 curated demonstration opportunities in `src/data/opportunities.json` spanning the Product and Technology-adjacent family.
+- **Data Fixtures:** 12 curated industry opportunities in `src/data/opportunities.json` across tier-one tech companies (Stripe, Linear, Notion, Figma, Spotify, Razorpay, Atlassian, Airbnb, Swiggy, Datadog, Duolingo, Canva).
 - **APIs & Cost:** **₹0 / $0 target.** Zero paid APIs, no API keys, no scraping, no external backend. Fully deployable as a static site to Cloudflare Pages, Vercel, or Netlify.
 
 ---
