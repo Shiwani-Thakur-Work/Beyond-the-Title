@@ -58,6 +58,15 @@ export const storageService = {
     return cloned;
   },
 
+  loadProfileById(profileId: string): CandidateProfile {
+    const found = SAMPLE_PROFILES.find((p) => p.id === profileId || p.profile.id === profileId);
+    const target = found?.profile || SAMPLE_PROFILES[0].profile;
+    const cloned = JSON.parse(JSON.stringify(target));
+    cloned.updatedAt = new Date().toISOString();
+    storageService.saveProfile(cloned);
+    return cloned;
+  },
+
   getSavedOpportunities(): SavedOpportunity[] {
     try {
       const data = localStorage.getItem(SAVED_OPPORTUNITIES_KEY);

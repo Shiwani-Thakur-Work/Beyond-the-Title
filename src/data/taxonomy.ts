@@ -88,6 +88,32 @@ export const ROLE_TAXONOMY: RoleTaxonomyOption[] = [
       'Escalation Root-Cause Analysis',
     ],
   },
+  {
+    role: 'Scrum Master',
+    family: 'Technical Project Management',
+    commonAdjacent: ['Technical Project Coordinator', 'Product Operations Specialist', 'Agile Delivery Lead'],
+    suggestedCapabilities: [
+      'Agile Sprint Planning',
+      'Sprint Schedule Coordination',
+      'Cross-team Sync Facilitation',
+      'Issue & Dependency Tracking',
+      'Retrospective Facilitation',
+      'Team Velocity & Bottleneck Removal',
+    ],
+  },
+  {
+    role: 'Solutions Consultant',
+    family: 'Solutions & Customer Ops',
+    commonAdjacent: ['Implementation Specialist', 'Business Analyst', 'Product Operations Specialist'],
+    suggestedCapabilities: [
+      'Client Onboarding Architecture',
+      'Integration Testing & Troubleshooting',
+      'API & Webhook Troubleshooting',
+      'Technical Documentation',
+      'Stakeholder Interviewing',
+      'Business Process Mapping',
+    ],
+  },
 ];
 
 export const CREATIVE_INTEREST_SUGGESTIONS = [

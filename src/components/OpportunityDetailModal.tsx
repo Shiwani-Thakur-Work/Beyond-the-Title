@@ -116,18 +116,49 @@ export const OpportunityDetailModal: React.FC<OpportunityDetailModalProps> = ({
         {/* Scrollable Body */}
         <div className="p-5 sm:p-7 overflow-y-auto space-y-6">
           {/* Honest Transparent Matching Breakdown */}
-          <div className="bg-indigo-50/70 border border-indigo-100 rounded-2xl p-5 space-y-4">
+          <div className={`rounded-2xl p-5 space-y-4 border ${
+            match.fitDescriptor === 'Hobby & Creative Exploration'
+              ? 'bg-purple-50/80 border-purple-200 text-purple-950'
+              : match.fitDescriptor === 'Adjacent Role Pivot'
+              ? 'bg-violet-50/80 border-violet-200 text-violet-950'
+              : 'bg-indigo-50/70 border-indigo-100 text-slate-800'
+          }`}>
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-indigo-900 uppercase tracking-wider flex items-center gap-1.5">
+              <span className="text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
                 <Info className="w-4 h-4 text-indigo-600" />
                 Explainable Matching Breakdown
               </span>
-              <span className="text-xs font-bold bg-white text-indigo-700 px-2.5 py-1 rounded-lg border border-indigo-200">
+              <span className={`text-xs font-bold px-2.5 py-1 rounded-lg border ${
+                match.fitDescriptor === 'Hobby & Creative Exploration'
+                  ? 'bg-white text-purple-800 border-purple-300'
+                  : match.fitDescriptor === 'Adjacent Role Pivot'
+                  ? 'bg-white text-violet-800 border-violet-300'
+                  : 'bg-white text-indigo-700 border-indigo-200'
+              }`}>
                 {match.fitDescriptor}
               </span>
             </div>
 
-            <p className="text-xs sm:text-sm text-slate-800 leading-relaxed font-medium">
+            {/* Pathway Specific Callout Banner */}
+            {match.isHobbyFit && match.matchedHobbyName && (
+              <div className="p-3 bg-purple-100/70 border border-purple-200 rounded-xl flex items-start gap-2.5">
+                <Heart className="w-4 h-4 text-purple-600 shrink-0 mt-0.5" />
+                <div className="text-xs text-purple-900 leading-relaxed">
+                  <strong>Creative & Hobby Exploration:</strong> This opportunity was surfaced because your profile highlights <strong>&ldquo;{match.matchedHobbyName}&rdquo;</strong> as a creative interest. Beyond the Title allows you to discover roles and collaborative media projects where your hobbies create value, without misrepresenting them as formal corporate credentials.
+                </div>
+              </div>
+            )}
+
+            {match.isAdjacentFit && match.matchedAdjacentRoleName && (
+              <div className="p-3 bg-violet-100/70 border border-violet-200 rounded-xl flex items-start gap-2.5">
+                <Briefcase className="w-4 h-4 text-violet-600 shrink-0 mt-0.5" />
+                <div className="text-xs text-violet-900 leading-relaxed">
+                  <strong>Adjacent Career Pivot:</strong> Discovered through your adjacent direction in <strong>&ldquo;{match.matchedAdjacentRoleName}&rdquo;</strong>. This enables you to pivot your career into high-demand adjacent functions by leveraging transferable capabilities.
+                </div>
+              </div>
+            )}
+
+            <p className="text-xs sm:text-sm leading-relaxed font-medium">
               {match.explanationSummary}
             </p>
 

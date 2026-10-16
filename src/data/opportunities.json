@@ -1,40 +1,5 @@
 [
   {
-    "id": "opp-stripe-01",
-    "title": "Product Operations Specialist - Payments & Risk",
-    "organisationLabel": "Stripe",
-    "roleFamily": "Product Operations",
-    "seniorityLabel": "Mid-Level",
-    "workMode": "Remote",
-    "location": "Remote (Global / IST & UTC-friendly)",
-    "summary": "Act as the critical operational connective tissue between Stripe's Core Payments engineering pods and merchant-facing teams. You will streamline incident escalation playbooks, standardize internal documentation, and ensure feedback loops from high-growth enterprise merchants reach product leads.",
-    "responsibilities": [
-      "Partner with Product Managers to design operational readiness checklists and feature rollout cadences.",
-      "Synthesize merchant feedback and escalation tickets into actionable product bug prioritization logs.",
-      "Administer and optimize internal operational workflows across Jira, Linear, and Slack bots.",
-      "Maintain the global payments operational playbook, change logs, and internal training guides."
-    ],
-    "requiredRoleTags": ["Product Operations Specialist", "Product Operations", "Product Manager"],
-    "adjacentRoleTags": ["Business Analyst", "Technical Project Coordinator", "Implementation Specialist"],
-    "requiredSkillTags": [
-      "Process Documentation & Standardization",
-      "Cross-team Communication Cadence",
-      "Feature Launch Coordination",
-      "Stakeholder Management"
-    ],
-    "preferredSkillTags": [
-      "Product Tech Stack Administration",
-      "Workflow Automation",
-      "Data Cleanliness & Metric Auditing"
-    ],
-    "mustHaves": [
-      "2+ years experience building clear operational cadences between engineering and non-technical teams.",
-      "Meticulous technical documentation and release communication habits."
-    ],
-    "sourceLabel": "Curated Industry Opportunity",
-    "demoOnly": false
-  },
-  {
     "id": "opp-linear-02",
     "title": "Product Manager - Core Workflow & Developer Integrations",
     "organisationLabel": "Linear",
@@ -49,7 +14,7 @@
       "Partner closely with core engineers and designers through fast, asynchronous iteration cycles.",
       "Track adoption funnels, latency metrics, and API integration usage."
     ],
-    "requiredRoleTags": ["Product Manager", "Associate Product Manager"],
+    "requiredRoleTags": ["Product Manager"],
     "adjacentRoleTags": ["Product Operations Specialist", "Business Analyst", "Technical Project Coordinator"],
     "requiredSkillTags": [
       "Requirements Documentation (PRD)",
@@ -66,285 +31,7 @@
       "Demonstrated ability to turn complex developer workflows into simple, elegant product specs.",
       "High empathy for modern engineering workflows and fast backlog execution."
     ],
-    "sourceLabel": "Curated Industry Opportunity",
-    "demoOnly": false
-  },
-  {
-    "id": "opp-notion-03",
-    "title": "Technical Project Coordinator - Enterprise Workspaces",
-    "organisationLabel": "Notion",
-    "roleFamily": "Technical Project Management",
-    "seniorityLabel": "Mid-Level",
-    "workMode": "Hybrid",
-    "location": "Bengaluru, India (Hybrid)",
-    "summary": "Coordinate multi-quarter infrastructure and workspace migration programs for Notion's largest global enterprise clients. Keep dependencies visible, maintain risk registers, and facilitate seamless cross-functional delivery.",
-    "responsibilities": [
-      "Track complex engineering dependencies across permissions, billing, and database indexing squads.",
-      "Build transparent sprint dashboards and release schedules for executive review.",
-      "Facilitate risk reviews, dependency unblocking sessions, and post-migration retrospectives.",
-      "Maintain enterprise architecture diagrams and deployment release documentation."
-    ],
-    "requiredRoleTags": ["Technical Project Coordinator", "Technical Project Manager"],
-    "adjacentRoleTags": ["Product Operations Specialist", "Scrum Master", "Product Manager"],
-    "requiredSkillTags": [
-      "Sprint Schedule Coordination",
-      "Issue & Dependency Tracking",
-      "Technical Documentation",
-      "Risk Assessment & Mitigation"
-    ],
-    "preferredSkillTags": [
-      "Jira / Linear Workflow Configuration",
-      "Cross-team Sync Facilitation",
-      "Release Readiness Management"
-    ],
-    "mustHaves": [
-      "Proven track record managing complex technical roadmaps and cross-team dependencies.",
-      "Outstanding written status reporting and stakeholder alignment."
-    ],
-    "sourceLabel": "Curated Industry Opportunity",
-    "demoOnly": false
-  },
-  {
-    "id": "opp-figma-04",
-    "title": "Product Specialist - Design Systems & Community Tooling",
-    "organisationLabel": "Figma",
-    "roleFamily": "Product Management",
-    "seniorityLabel": "Associate",
-    "workMode": "Remote",
-    "location": "Remote (Flexible)",
-    "summary": "Support Figma's Design Systems and Community ecosystems. Partner with product managers and developer advocates to gather community feedback, test design token features, and create crisp technical documentation.",
-    "responsibilities": [
-      "Conduct ongoing user testing and feedback sessions with design systems leads and community creators.",
-      "Draft concise functional requirements and acceptance criteria for plugin and component features.",
-      "Audit Figma Community assets for quality, accessibility compliance, and tagging consistency.",
-      "Collaborate with marketing on release notes, interactive demos, and feature guides."
-    ],
-    "requiredRoleTags": ["Product Manager", "Product Coordinator", "Product Specialist"],
-    "adjacentRoleTags": ["Product Operations Specialist", "Business Analyst"],
-    "requiredSkillTags": [
-      "User Research & Discovery",
-      "Requirements Documentation (PRD)",
-      "Stakeholder Management"
-    ],
-    "preferredSkillTags": [
-      "Visual Design & Typography",
-      "Technical Illustration & Diagrams",
-      "Voiceover & Audio Narration"
-    ],
-    "mustHaves": [
-      "Genuine passion for design tools, component libraries, and creative communities.",
-      "Comfort writing detailed interaction specifications."
-    ],
-    "sourceLabel": "Curated Industry Opportunity",
-    "demoOnly": false
-  },
-  {
-    "id": "opp-atlassian-05",
-    "title": "Senior Business Systems Analyst - Cloud Billing",
-    "organisationLabel": "Atlassian",
-    "roleFamily": "Business Analysis",
-    "seniorityLabel": "Senior",
-    "workMode": "Remote",
-    "location": "Remote (India)",
-    "summary": "Transform multi-tier enterprise licensing and automated cloud billing systems. You will map complex financial workflows, author detailed functional specifications, and align engineering with finance operations.",
-    "responsibilities": [
-      "Map as-is and to-be business process models for subscription renewals and tier entitlements.",
-      "Conduct in-depth discovery interviews with sales ops, billing finance, and customer support leads.",
-      "Author rigorous functional requirement documents (FRDs), state transition matrices, and user stories.",
-      "Coordinate UAT testing and end-to-end data reconciliation with billing engineering."
-    ],
-    "requiredRoleTags": ["Business Analyst", "Business Systems Analyst"],
-    "adjacentRoleTags": ["Product Manager", "Product Operations Specialist", "Technical Project Coordinator"],
-    "requiredSkillTags": [
-      "Business Process Mapping",
-      "Requirements Gathering & Functional Specs",
-      "Stakeholder Interviewing",
-      "Acceptance Criteria Definition"
-    ],
-    "preferredSkillTags": [
-      "Data Modeling & SQL Queries",
-      "Cost-Benefit Analysis",
-      "Workflow Optimization"
-    ],
-    "mustHaves": [
-      "Deep experience translating complex enterprise logic into unambiguous functional documentation.",
-      "Precision in defining boundary conditions and edge cases."
-    ],
-    "sourceLabel": "Curated Industry Opportunity",
-    "demoOnly": false
-  },
-  {
-    "id": "opp-razorpay-06",
-    "title": "Product Growth Specialist - Payment Gateway Activation",
-    "organisationLabel": "Razorpay",
-    "roleFamily": "Product Management",
-    "seniorityLabel": "Mid-Level",
-    "workMode": "Hybrid",
-    "location": "Bengaluru, India (Hybrid)",
-    "summary": "Drive first-transaction activation velocity and reduce onboarding churn for over 500,000 Indian SMB merchants. You will design rigorous experiments, analyze drop-off funnels, and optimize self-serve verification.",
-    "responsibilities": [
-      "Analyze merchant onboarding drop-off funnels across KYC verification and API key creation.",
-      "Formulate hypothesis-driven growth experiments and run statistical A/B tests on onboarding steps.",
-      "Partner with product designers and copywriters to refine interactive sandbox walkthroughs.",
-      "Present activation velocity and cohort retention curves in weekly leadership reviews."
-    ],
-    "requiredRoleTags": ["Product Growth Specialist", "Product Manager"],
-    "adjacentRoleTags": ["Product Operations Specialist", "Product Analytics Specialist"],
-    "requiredSkillTags": [
-      "Growth Experiment Design",
-      "Funnel Drop-off Analysis",
-      "Onboarding Flow Optimization",
-      "A/B Testing & Experimentation"
-    ],
-    "preferredSkillTags": [
-      "Quantitative Analytics (Mixpanel / Amplitude)",
-      "Behavioral Cohort Tracking",
-      "Creative Writing & Storyboarding"
-    ],
-    "mustHaves": [
-      "Strong analytical intuition with proven track record of increasing self-serve conversion funnels.",
-      "Experience running and interpreting data-backed growth experiments."
-    ],
-    "sourceLabel": "Curated Industry Opportunity",
-    "demoOnly": false
-  },
-  {
-    "id": "opp-spotify-07",
-    "title": "Associate Product Manager - Creator Studio Tools",
-    "organisationLabel": "Spotify",
-    "roleFamily": "Product Management",
-    "seniorityLabel": "Associate",
-    "workMode": "Remote",
-    "location": "Stockholm / Remote (EMEA & IST-friendly)",
-    "summary": "Build the next generation of publishing and analytics tools for podcasters and musical creators. You will organize creator discovery sessions, prioritize feature requests, and deliver intuitive workflow tools.",
-    "responsibilities": [
-      "Engage directly with independent podcasters and audio creators to uncover workflow pain points.",
-      "Draft concise product specs, user stories, and acceptance criteria for media upload flows.",
-      "Track creator retention and episode analytics engagement alongside the data science team.",
-      "Coordinate release documentation and creator community briefing materials."
-    ],
-    "requiredRoleTags": ["Product Manager", "Associate Product Manager"],
-    "adjacentRoleTags": ["Product Operations Specialist", "Business Analyst"],
-    "requiredSkillTags": [
-      "Requirements Documentation (PRD)",
-      "User Research & Discovery",
-      "Agile Sprint Planning",
-      "Stakeholder Management"
-    ],
-    "preferredSkillTags": [
-      "Voiceover & Audio Narration",
-      "Product Analytics & KPI Tracking",
-      "Visual Design & Typography"
-    ],
-    "mustHaves": [
-      "Enthusiasm for audio media, creator tools, and digital storytelling.",
-      "Strong foundational skills in product requirements documentation."
-    ],
-    "sourceLabel": "Curated Industry Opportunity",
-    "demoOnly": false
-  },
-  {
-    "id": "opp-airbnb-08",
-    "title": "Implementation Specialist - Host Connectivity APIs",
-    "organisationLabel": "Airbnb",
-    "roleFamily": "Solutions & Customer Ops",
-    "seniorityLabel": "Mid-Level",
-    "workMode": "Remote",
-    "location": "Remote (APAC / Americas)",
-    "summary": "Guide tier-one property management software partners and boutique hotel chains through API integration with Airbnb's booking and calendar sync infrastructure.",
-    "responsibilities": [
-      "Lead technical onboarding kickoff calls with enterprise software vendor engineering leads.",
-      "Map partner property catalogs to Airbnb's REST API and validate real-time pricing webhooks.",
-      "Author integration cookbooks, sample payloads, and developer troubleshooting guides.",
-      "Escalate edge-case platform bugs directly to core host engineering pods."
-    ],
-    "requiredRoleTags": ["Implementation Specialist", "Solutions Consultant"],
-    "adjacentRoleTags": ["Product Operations Specialist", "Business Analyst", "Technical Project Coordinator"],
-    "requiredSkillTags": [
-      "Client Onboarding Architecture",
-      "Integration Testing & Troubleshooting",
-      "User Training & Documentation",
-      "Stakeholder Management"
-    ],
-    "preferredSkillTags": [
-      "API & Webhook Troubleshooting",
-      "Workflow Customization",
-      "Technical Illustration & Diagrams"
-    ],
-    "mustHaves": [
-      "Proven technical communication skills working directly with external developer partners.",
-      "Methodical debugging approach when diagnosing API payload discrepancies."
-    ],
-    "sourceLabel": "Curated Industry Opportunity",
-    "demoOnly": false
-  },
-  {
-    "id": "opp-swiggy-09",
-    "title": "Lead Business Analyst - Hyperlocal Delivery Fleet",
-    "organisationLabel": "Swiggy",
-    "roleFamily": "Business Analysis",
-    "seniorityLabel": "Senior",
-    "workMode": "Hybrid",
-    "location": "Bengaluru, India (Hybrid)",
-    "summary": "Spearhead functional process optimization and dispatch rule specifications for Swiggy's 300,000+ delivery partner fleet across 500+ Indian cities.",
-    "responsibilities": [
-      "Model batching and dispatch algorithms into clear functional operational specs.",
-      "Partner with city operations heads to identify driver wait-time and routing bottlenecks.",
-      "Author detailed acceptance criteria and edge-case definitions for dynamic surge models.",
-      "Monitor delivery partner satisfaction metrics and driver app usability."
-    ],
-    "requiredRoleTags": ["Business Analyst", "Lead Business Analyst"],
-    "adjacentRoleTags": ["Product Manager", "Product Operations Specialist"],
-    "requiredSkillTags": [
-      "Business Process Mapping",
-      "Requirements Gathering & Functional Specs",
-      "Data Modeling & SQL Queries",
-      "Acceptance Criteria Definition"
-    ],
-    "preferredSkillTags": [
-      "Workflow Optimization",
-      "Gap Analysis",
-      "Cost-Benefit Analysis"
-    ],
-    "mustHaves": [
-      "Experience optimizing high-throughput operational or supply-chain logistics flows.",
-      "Deep command of functional specification authoring."
-    ],
-    "sourceLabel": "Curated Industry Opportunity",
-    "demoOnly": false
-  },
-  {
-    "id": "opp-datadog-10",
-    "title": "Technical Project Coordinator - Observability Platform",
-    "organisationLabel": "Datadog",
-    "roleFamily": "Technical Project Management",
-    "seniorityLabel": "Mid-Level",
-    "workMode": "Remote",
-    "location": "Remote (Worldwide)",
-    "summary": "Coordinate multi-cluster infrastructure upgrades, release gates, and incident post-mortem follow-through across distributed observability engineering pods.",
-    "responsibilities": [
-      "Facilitate bi-weekly sprint coordination across telemetry ingest and storage engine teams.",
-      "Maintain transparent release dashboards and track platform dependency critical paths.",
-      "Standardize post-incident action items and ensure bug remediation deadlines are honored.",
-      "Maintain system architecture documentation and internal engineering release notes."
-    ],
-    "requiredRoleTags": ["Technical Project Coordinator", "Technical Project Manager"],
-    "adjacentRoleTags": ["Product Operations Specialist", "Scrum Master", "Product Manager"],
-    "requiredSkillTags": [
-      "Sprint Schedule Coordination",
-      "Issue & Dependency Tracking",
-      "Technical Documentation",
-      "Risk Assessment & Mitigation"
-    ],
-    "preferredSkillTags": [
-      "Jira / Linear Workflow Configuration",
-      "Release Readiness Management",
-      "Cross-team Sync Facilitation"
-    ],
-    "mustHaves": [
-      "Disciplined project coordination track record in cloud or SaaS engineering environments.",
-      "Clear, concise written and verbal technical communication."
-    ],
+    "pathwayCategory": "primary",
     "sourceLabel": "Curated Industry Opportunity",
     "demoOnly": false
   },
@@ -364,7 +51,7 @@
       "Run statistical A/B tests on lesson completion animations and audio cues."
     ],
     "requiredRoleTags": ["Product Manager", "Associate Product Manager"],
-    "adjacentRoleTags": ["Product Operations Specialist", "Product Growth Specialist"],
+    "adjacentRoleTags": ["Product Growth Specialist", "Product Operations Specialist"],
     "requiredSkillTags": [
       "Requirements Documentation (PRD)",
       "User Research & Discovery",
@@ -380,6 +67,43 @@
       "Passion for mobile consumer apps, gamification design, and educational accessibility.",
       "Strong analytical and user-centered design intuition."
     ],
+    "pathwayCategory": "primary",
+    "sourceLabel": "Curated Industry Opportunity",
+    "demoOnly": false
+  },
+  {
+    "id": "opp-stripe-01",
+    "title": "Product Operations Specialist - Payments & Risk",
+    "organisationLabel": "Stripe",
+    "roleFamily": "Product Operations",
+    "seniorityLabel": "Mid-Level",
+    "workMode": "Remote",
+    "location": "Remote (Global / IST & UTC-friendly)",
+    "summary": "Act as the critical operational connective tissue between Stripe's Core Payments engineering pods and merchant-facing teams. You will streamline incident escalation playbooks, standardize internal documentation, and ensure feedback loops reach product leads.",
+    "responsibilities": [
+      "Partner with Product Managers to design operational readiness checklists and feature rollout cadences.",
+      "Synthesize merchant feedback and escalation tickets into actionable product bug prioritization logs.",
+      "Administer and optimize internal operational workflows across Jira, Linear, and Slack bots.",
+      "Maintain the global payments operational playbook, change logs, and internal training guides."
+    ],
+    "requiredRoleTags": ["Product Operations Specialist", "Product Operations"],
+    "adjacentRoleTags": ["Product Manager", "Business Analyst", "Technical Project Coordinator", "Implementation Specialist"],
+    "requiredSkillTags": [
+      "Process Documentation & Standardization",
+      "Cross-team Communication Cadence",
+      "Feature Launch Coordination",
+      "Stakeholder Management"
+    ],
+    "preferredSkillTags": [
+      "Product Tech Stack Administration",
+      "Workflow Automation",
+      "Data Cleanliness & Metric Auditing"
+    ],
+    "mustHaves": [
+      "2+ years experience building clear operational cadences between engineering and non-technical teams.",
+      "Meticulous technical documentation and release communication habits."
+    ],
+    "pathwayCategory": "primary",
     "sourceLabel": "Curated Industry Opportunity",
     "demoOnly": false
   },
@@ -415,7 +139,511 @@
       "Demonstrated experience scaling operational processes in high-volume creator or marketplace platforms.",
       "Excellent cross-cultural communication and stakeholder management."
     ],
+    "pathwayCategory": "primary",
     "sourceLabel": "Curated Industry Opportunity",
     "demoOnly": false
+  },
+  {
+    "id": "opp-notion-03",
+    "title": "Technical Project Coordinator - Enterprise Workspaces",
+    "organisationLabel": "Notion",
+    "roleFamily": "Technical Project Management",
+    "seniorityLabel": "Mid-Level",
+    "workMode": "Hybrid",
+    "location": "Bengaluru, India (Hybrid)",
+    "summary": "Coordinate multi-quarter infrastructure and workspace migration programs for Notion's largest global enterprise clients. Keep dependencies visible, maintain risk registers, and facilitate seamless cross-functional delivery.",
+    "responsibilities": [
+      "Track complex engineering dependencies across permissions, billing, and database indexing squads.",
+      "Build transparent sprint dashboards and release schedules for executive review.",
+      "Facilitate risk reviews, dependency unblocking sessions, and post-migration retrospectives.",
+      "Maintain enterprise architecture diagrams and deployment release documentation."
+    ],
+    "requiredRoleTags": ["Technical Project Coordinator", "Technical Project Manager"],
+    "adjacentRoleTags": ["Product Operations Specialist", "Scrum Master", "Product Manager"],
+    "requiredSkillTags": [
+      "Sprint Schedule Coordination",
+      "Issue & Dependency Tracking",
+      "Technical Documentation",
+      "Risk Assessment & Mitigation"
+    ],
+    "preferredSkillTags": [
+      "Jira / Linear Workflow Configuration",
+      "Cross-team Sync Facilitation",
+      "Release Readiness Management"
+    ],
+    "mustHaves": [
+      "Proven track record managing complex technical roadmaps and cross-team dependencies.",
+      "Outstanding written status reporting and stakeholder alignment."
+    ],
+    "pathwayCategory": "primary",
+    "sourceLabel": "Curated Industry Opportunity",
+    "demoOnly": false
+  },
+  {
+    "id": "opp-datadog-10",
+    "title": "Technical Project Coordinator - Observability Platform",
+    "organisationLabel": "Datadog",
+    "roleFamily": "Technical Project Management",
+    "seniorityLabel": "Mid-Level",
+    "workMode": "Remote",
+    "location": "Remote (Worldwide)",
+    "summary": "Coordinate multi-cluster infrastructure upgrades, release gates, and incident post-mortem follow-through across distributed observability engineering pods.",
+    "responsibilities": [
+      "Facilitate bi-weekly sprint coordination across telemetry ingest and storage engine teams.",
+      "Maintain transparent release dashboards and track platform dependency critical paths.",
+      "Standardize post-incident action items and ensure bug remediation deadlines are honored.",
+      "Maintain system architecture documentation and internal engineering release notes."
+    ],
+    "requiredRoleTags": ["Technical Project Coordinator", "Technical Project Manager"],
+    "adjacentRoleTags": ["Product Operations Specialist", "Scrum Master", "Implementation Specialist"],
+    "requiredSkillTags": [
+      "Sprint Schedule Coordination",
+      "Issue & Dependency Tracking",
+      "Technical Documentation",
+      "Risk Assessment & Mitigation"
+    ],
+    "preferredSkillTags": [
+      "Jira / Linear Workflow Configuration",
+      "Release Readiness Management",
+      "Cross-team Sync Facilitation"
+    ],
+    "mustHaves": [
+      "Disciplined project coordination track record in cloud or SaaS engineering environments.",
+      "Clear, concise written and verbal technical communication."
+    ],
+    "pathwayCategory": "primary",
+    "sourceLabel": "Curated Industry Opportunity",
+    "demoOnly": false
+  },
+  {
+    "id": "opp-atlassian-05",
+    "title": "Senior Business Systems Analyst - Cloud Billing",
+    "organisationLabel": "Atlassian",
+    "roleFamily": "Business Analysis",
+    "seniorityLabel": "Senior",
+    "workMode": "Remote",
+    "location": "Remote (India)",
+    "summary": "Transform multi-tier enterprise licensing and automated cloud billing systems. You will map complex financial workflows, author detailed functional specifications, and align engineering with finance operations.",
+    "responsibilities": [
+      "Map as-is and to-be business process models for subscription renewals and tier entitlements.",
+      "Conduct in-depth discovery interviews with sales ops, billing finance, and customer support leads.",
+      "Author rigorous functional requirement documents (FRDs), state transition matrices, and user stories.",
+      "Coordinate UAT testing and end-to-end data reconciliation with billing engineering."
+    ],
+    "requiredRoleTags": ["Business Analyst", "Business Systems Analyst"],
+    "adjacentRoleTags": ["Product Manager", "Product Operations Specialist", "Solutions Consultant"],
+    "requiredSkillTags": [
+      "Business Process Mapping",
+      "Requirements Gathering & Functional Specs",
+      "Stakeholder Interviewing",
+      "Acceptance Criteria Definition"
+    ],
+    "preferredSkillTags": [
+      "Data Modeling & SQL Queries",
+      "Cost-Benefit Analysis",
+      "Workflow Optimization"
+    ],
+    "mustHaves": [
+      "Deep experience translating complex enterprise logic into unambiguous functional documentation.",
+      "Precision in defining boundary conditions and edge cases."
+    ],
+    "pathwayCategory": "primary",
+    "sourceLabel": "Curated Industry Opportunity",
+    "demoOnly": false
+  },
+  {
+    "id": "opp-swiggy-09",
+    "title": "Lead Business Analyst - Hyperlocal Delivery Fleet",
+    "organisationLabel": "Swiggy",
+    "roleFamily": "Business Analysis",
+    "seniorityLabel": "Senior",
+    "workMode": "Hybrid",
+    "location": "Bengaluru, India (Hybrid)",
+    "summary": "Spearhead functional process optimization and dispatch rule specifications for Swiggy's 300,000+ delivery partner fleet across 500+ Indian cities.",
+    "responsibilities": [
+      "Model batching and dispatch algorithms into clear functional operational specs.",
+      "Partner with city operations heads to identify driver wait-time and routing bottlenecks.",
+      "Author detailed acceptance criteria and edge-case definitions for dynamic surge models.",
+      "Monitor delivery partner satisfaction metrics and driver app usability."
+    ],
+    "requiredRoleTags": ["Business Analyst", "Lead Business Analyst"],
+    "adjacentRoleTags": ["Product Manager", "Product Operations Specialist"],
+    "requiredSkillTags": [
+      "Business Process Mapping",
+      "Requirements Gathering & Functional Specs",
+      "Data Modeling & SQL Queries",
+      "Acceptance Criteria Definition"
+    ],
+    "preferredSkillTags": [
+      "Workflow Optimization",
+      "Gap Analysis",
+      "Cost-Benefit Analysis"
+    ],
+    "mustHaves": [
+      "Experience optimizing high-throughput operational or supply-chain logistics flows.",
+      "Deep command of functional specification authoring."
+    ],
+    "pathwayCategory": "primary",
+    "sourceLabel": "Curated Industry Opportunity",
+    "demoOnly": false
+  },
+  {
+    "id": "opp-airbnb-08",
+    "title": "Implementation Specialist - Host Connectivity APIs",
+    "organisationLabel": "Airbnb",
+    "roleFamily": "Solutions & Customer Ops",
+    "seniorityLabel": "Mid-Level",
+    "workMode": "Remote",
+    "location": "Remote (APAC / Americas)",
+    "summary": "Guide tier-one property management software partners and boutique hotel chains through API integration with Airbnb's booking and calendar sync infrastructure.",
+    "responsibilities": [
+      "Lead technical onboarding kickoff calls with enterprise software vendor engineering leads.",
+      "Map partner property catalogs to Airbnb's REST API and validate real-time pricing webhooks.",
+      "Author integration cookbooks, sample payloads, and developer troubleshooting guides.",
+      "Escalate edge-case platform bugs directly to core host engineering pods."
+    ],
+    "requiredRoleTags": ["Implementation Specialist", "Solutions Consultant"],
+    "adjacentRoleTags": ["Product Operations Specialist", "Business Analyst", "Technical Project Coordinator"],
+    "requiredSkillTags": [
+      "Client Onboarding Architecture",
+      "Integration Testing & Troubleshooting",
+      "User Training & Documentation",
+      "Stakeholder Management"
+    ],
+    "preferredSkillTags": [
+      "API & Webhook Troubleshooting",
+      "Workflow Customization",
+      "Technical Illustration & Diagrams"
+    ],
+    "mustHaves": [
+      "Proven technical communication skills working directly with external developer partners.",
+      "Methodical debugging approach when diagnosing API payload discrepancies."
+    ],
+    "pathwayCategory": "adjacent",
+    "sourceLabel": "Curated Industry Opportunity",
+    "demoOnly": false
+  },
+  {
+    "id": "opp-razorpay-06",
+    "title": "Product Growth Specialist - Payment Gateway Activation",
+    "organisationLabel": "Razorpay",
+    "roleFamily": "Product Management",
+    "seniorityLabel": "Mid-Level",
+    "workMode": "Hybrid",
+    "location": "Bengaluru, India (Hybrid)",
+    "summary": "Drive first-transaction activation velocity and reduce onboarding churn for over 500,000 Indian SMB merchants. You will design rigorous experiments, analyze drop-off funnels, and optimize self-serve verification.",
+    "responsibilities": [
+      "Analyze merchant onboarding drop-off funnels across KYC verification and API key creation.",
+      "Formulate hypothesis-driven growth experiments and run statistical A/B tests on onboarding steps.",
+      "Partner with product designers and copywriters to refine interactive sandbox walkthroughs.",
+      "Present activation velocity and cohort retention curves in weekly leadership reviews."
+    ],
+    "requiredRoleTags": ["Product Growth Specialist"],
+    "adjacentRoleTags": ["Product Manager", "Business Analyst", "Product Operations Specialist"],
+    "requiredSkillTags": [
+      "Growth Experiment Design",
+      "Funnel Drop-off Analysis",
+      "Onboarding Flow Optimization",
+      "A/B Testing & Experimentation"
+    ],
+    "preferredSkillTags": [
+      "Quantitative Analytics (Mixpanel / Amplitude)",
+      "Behavioral Cohort Tracking",
+      "Creative Writing & Storyboarding"
+    ],
+    "mustHaves": [
+      "Strong analytical intuition with proven track record of increasing self-serve conversion funnels.",
+      "Experience running and interpreting data-backed growth experiments."
+    ],
+    "pathwayCategory": "adjacent",
+    "sourceLabel": "Curated Industry Opportunity",
+    "demoOnly": false
+  },
+  {
+    "id": "opp-gitlab-13",
+    "title": "Technical Release & Agile Delivery Lead",
+    "organisationLabel": "GitLab",
+    "roleFamily": "Technical Project Management",
+    "seniorityLabel": "Mid-Level",
+    "workMode": "Remote",
+    "location": "Remote (Worldwide)",
+    "summary": "Ensure monthly predictable release cadences for GitLab's open-core and enterprise distributions. Remove dependency bottlenecks, chair asynchronous retrospectives, and coordinate deployment security validations.",
+    "responsibilities": [
+      "Facilitate asynchronous sprint planning and release retrospective cadences for 20+ engineering pods.",
+      "Track multi-repository version tags, hotfix cherry-picks, and regression blocker escalation.",
+      "Author transparent status bulletins and public handbook release guidelines.",
+      "Coach squads on agile workflow configuration and bottleneck elimination."
+    ],
+    "requiredRoleTags": ["Scrum Master", "Agile Delivery Lead"],
+    "adjacentRoleTags": ["Technical Project Coordinator", "Product Operations Specialist", "Implementation Specialist"],
+    "requiredSkillTags": [
+      "Agile Sprint Planning",
+      "Sprint Schedule Coordination",
+      "Cross-team Sync Facilitation",
+      "Issue & Dependency Tracking"
+    ],
+    "preferredSkillTags": [
+      "Release Readiness Management",
+      "Risk Assessment & Mitigation",
+      "Jira / Linear Workflow Configuration"
+    ],
+    "mustHaves": [
+      "Passion for transparent, asynchronous agile delivery and open-core development cultures.",
+      "Expertise in dependency unblocking and release readiness."
+    ],
+    "pathwayCategory": "adjacent",
+    "sourceLabel": "Curated Industry Opportunity",
+    "demoOnly": false
+  },
+  {
+    "id": "opp-hubspot-14",
+    "title": "Solutions Consultant & Integration Architect",
+    "organisationLabel": "HubSpot",
+    "roleFamily": "Solutions & Customer Ops",
+    "seniorityLabel": "Senior",
+    "workMode": "Hybrid",
+    "location": "Dublin, Ireland / Remote (EMEA)",
+    "summary": "Partner with enterprise growth teams to architect custom CRM, marketing automation, and webhook architectures for high-volume SaaS customers.",
+    "responsibilities": [
+      "Conduct in-depth technical discovery sessions with enterprise CTOs and solution architects.",
+      "Design resilient data schema mappings and automated webhook triggers for bi-directional synchronization.",
+      "Create high-clarity functional integration blueprints, state diagrams, and client rollout plans.",
+      "Synthesize enterprise partner requirements into feedback memos for HubSpot platform engineering."
+    ],
+    "requiredRoleTags": ["Solutions Consultant", "Solutions Architect"],
+    "adjacentRoleTags": ["Implementation Specialist", "Business Analyst", "Product Operations Specialist"],
+    "requiredSkillTags": [
+      "Client Onboarding Architecture",
+      "Integration Testing & Troubleshooting",
+      "Business Process Mapping",
+      "Stakeholder Interviewing"
+    ],
+    "preferredSkillTags": [
+      "API & Webhook Troubleshooting",
+      "Data Modeling & SQL Queries",
+      "Technical Documentation"
+    ],
+    "mustHaves": [
+      "Demonstrated ability to translate complex business workflows into reliable technical solution designs.",
+      "Superb customer presentation and executive technical consulting presence."
+    ],
+    "pathwayCategory": "adjacent",
+    "sourceLabel": "Curated Industry Opportunity",
+    "demoOnly": false
+  },
+  {
+    "id": "opp-figma-04",
+    "title": "Product Specialist - Design Systems & Community Tooling",
+    "organisationLabel": "Figma",
+    "roleFamily": "Product Management",
+    "seniorityLabel": "Associate",
+    "workMode": "Remote",
+    "location": "Remote (Flexible)",
+    "summary": "Support Figma's Design Systems and Community ecosystems. Partner with product managers and developer advocates to gather community feedback, test design token features, and create crisp technical documentation.",
+    "responsibilities": [
+      "Conduct ongoing user testing and feedback sessions with design systems leads and community creators.",
+      "Draft concise functional requirements and acceptance criteria for plugin and component features.",
+      "Audit Figma Community assets for quality, accessibility compliance, and tagging consistency.",
+      "Collaborate with marketing on release notes, interactive demos, and feature guides."
+    ],
+    "requiredRoleTags": ["Product Specialist", "Product Coordinator"],
+    "adjacentRoleTags": ["Product Manager", "Product Operations Specialist", "Business Analyst"],
+    "requiredSkillTags": [
+      "User Research & Discovery",
+      "Requirements Documentation (PRD)",
+      "Stakeholder Management"
+    ],
+    "preferredSkillTags": [
+      "Visual Design & Typography",
+      "Technical Illustration & Diagrams",
+      "Voiceover & Audio Narration"
+    ],
+    "mustHaves": [
+      "Genuine passion for design tools, component libraries, and creative communities.",
+      "Comfort writing detailed interaction specifications."
+    ],
+    "pathwayCategory": "adjacent",
+    "sourceLabel": "Curated Industry Opportunity",
+    "demoOnly": false
+  },
+  {
+    "id": "opp-spotify-voice-15",
+    "title": "Audio Experience & Voiceover Production Specialist",
+    "organisationLabel": "Spotify / Audible (Demo)",
+    "roleFamily": "Media & Audio Experience",
+    "seniorityLabel": "Mid-Level",
+    "workMode": "Remote",
+    "location": "Stockholm / Remote (EMEA & IST-friendly)",
+    "summary": "Bridge creative audio storytelling with product sound experience. Direct voice narrators, calibrate narrative pacing across audiobooks and guided podcasts, and evaluate audio prompt clarity in mobile listening apps.",
+    "responsibilities": [
+      "Direct professional voice talent and audio narrators on pronunciation, emotional cadence, and acoustic clarity.",
+      "Audit interactive sound design cues, voice navigation prompts, and audio metadata standards.",
+      "Collaborate with core listening product managers to define tone-of-voice accessibility guidelines.",
+      "Partner with audio engineering pods to test audio fidelity across diverse headphones and smart speakers."
+    ],
+    "requiredRoleTags": ["Voiceover Specialist", "Audio Experience Specialist", "Media Producer"],
+    "adjacentRoleTags": ["Product Manager", "Associate Product Manager", "Product Operations Specialist"],
+    "requiredSkillTags": [
+      "Voiceover & Audio Narration",
+      "Audio Script Editing & Pacing",
+      "Sound Quality Review & QA"
+    ],
+    "preferredSkillTags": [
+      "Requirements Documentation (PRD)",
+      "User Research & Discovery",
+      "Stakeholder Management"
+    ],
+    "hobbyInterests": ["Voiceover & Audio Narration"],
+    "pathwayCategory": "hobby",
+    "mustHaves": [
+      "Exceptional auditory discernment for vocal pacing, tone consistency, and narration acoustics.",
+      "Hands-on experience with voiceover recording, audio narrative storyboards, or podcast voice production."
+    ],
+    "sourceLabel": "Curated Creative & Hobby Pathway",
+    "demoOnly": true
+  },
+  {
+    "id": "opp-vercel-illustration-16",
+    "title": "Technical Illustration & Systems Visualizer",
+    "organisationLabel": "Vercel / Figma (Demo)",
+    "roleFamily": "Design & Technical Documentation",
+    "seniorityLabel": "Mid-Level",
+    "workMode": "Remote",
+    "location": "Remote (Worldwide)",
+    "summary": "Transform intricate distributed cloud infrastructure, microservices, and API lifecycle concepts into intuitive visual schematics, diagrams, and interactive documentation graphics that make technical complexity visually delightful.",
+    "responsibilities": [
+      "Create high-precision vector architecture diagrams for developer docs, changelogs, and enterprise whitepapers.",
+      "Establish a unified technical illustration visual language for serverless deployments and edge network topologies.",
+      "Partner with engineering leads and product documentation specialists to visualize complex multi-step data pipelines.",
+      "Design animated interactive infographics and UI flow diagrams for developer learning hubs."
+    ],
+    "requiredRoleTags": ["Technical Illustrator", "Visual Systems Designer", "Information Designer"],
+    "adjacentRoleTags": ["Product Manager", "Technical Project Coordinator", "Business Analyst"],
+    "requiredSkillTags": [
+      "Technical Illustration & Diagrams",
+      "Visual Design & Typography",
+      "Information Architecture"
+    ],
+    "preferredSkillTags": [
+      "Technical Documentation",
+      "Requirements Documentation (PRD)",
+      "Business Process Mapping"
+    ],
+    "hobbyInterests": ["Technical Illustration & Diagrams", "Visual Design & Typography"],
+    "pathwayCategory": "hobby",
+    "mustHaves": [
+      "Portfolio demonstrating ability to clarify complex technical concepts through clean, beautiful diagrammatic illustrations.",
+      "Mastery of modern vector illustration tools (Figma, Illustrator) and diagramming paradigms."
+    ],
+    "sourceLabel": "Curated Creative & Hobby Pathway",
+    "demoOnly": true
+  },
+  {
+    "id": "opp-substack-podcast-17",
+    "title": "Podcast Production & Creator Interview Lead",
+    "organisationLabel": "Substack / Gimlet (Demo)",
+    "roleFamily": "Media & Audio Experience",
+    "seniorityLabel": "Mid-Level",
+    "workMode": "Remote",
+    "location": "New York / Remote (Flexible)",
+    "summary": "Lead weekly studio recording cadences, audio storyboards, and editorial interviews for high-profile independent creators and thought leaders in technology and culture.",
+    "responsibilities": [
+      "Prepare host research dossiers, narrative interview arcs, and recorded segment storyboards.",
+      "Supervise multi-track audio recording sessions, remote audio capture, and guest technical pre-checks.",
+      "Direct sound editors on segment pacing, musical beds, dynamic transitions, and narrative rhythm.",
+      "Analyze episode retention graphs and listener drop-off timestamps to refine editorial formats."
+    ],
+    "requiredRoleTags": ["Podcast Producer", "Audio Narrative Producer", "Creator Media Lead"],
+    "adjacentRoleTags": ["Product Operations Specialist", "Technical Project Coordinator"],
+    "requiredSkillTags": [
+      "Podcast Production & Interviewing",
+      "Audio Story Editing",
+      "Guest Preparation & Scripting"
+    ],
+    "preferredSkillTags": [
+      "Process Documentation & Standardization",
+      "Cross-team Communication Cadence",
+      "Sprint Schedule Coordination"
+    ],
+    "hobbyInterests": ["Podcast Production & Interviewing", "Creative Writing & Storyboarding"],
+    "pathwayCategory": "hobby",
+    "mustHaves": [
+      "Proven audio storytelling intuition and talent interviewing experience.",
+      "Strong coordination habits across asynchronous editing and sound engineering teams."
+    ],
+    "sourceLabel": "Curated Creative & Hobby Pathway",
+    "demoOnly": true
+  },
+  {
+    "id": "opp-brilliant-game-18",
+    "title": "Interactive Game Mechanics & Educational Storyboarder",
+    "organisationLabel": "Brilliant / Duolingo (Demo)",
+    "roleFamily": "Learning Design & Gamification",
+    "seniorityLabel": "Mid-Level",
+    "workMode": "Remote",
+    "location": "Remote (Worldwide)",
+    "summary": "Design playful logic puzzles, gamified reward progressions, and interactive narrative lessons that teach computer science, algorithms, and STEM concepts through hands-on gamified challenges.",
+    "responsibilities": [
+      "Storyboard interactive multi-step puzzle progressions that introduce computational thinking without jargon.",
+      "Design game mechanics including streak boosters, branching narrative choices, and tactical power-ups.",
+      "Author precise game design specification documents (GDDs) for unity/canvas game engineers.",
+      "Playtest interactive mechanics with student cohorts and iterate based on cognitive friction logs."
+    ],
+    "requiredRoleTags": ["Game Mechanics Designer", "Educational Storyboarder", "Interactive Learning Designer"],
+    "adjacentRoleTags": ["Technical Project Coordinator", "Product Manager", "Scrum Master"],
+    "requiredSkillTags": [
+      "Game Design & Mechanics",
+      "Creative Writing & Storyboarding",
+      "Interactive Flow Prototyping"
+    ],
+    "preferredSkillTags": [
+      "Sprint Schedule Coordination",
+      "Requirements Documentation (PRD)",
+      "A/B Testing & Experimentation"
+    ],
+    "hobbyInterests": ["Game Design & Mechanics", "Creative Writing & Storyboarding"],
+    "pathwayCategory": "hobby",
+    "mustHaves": [
+      "Deep understanding of player motivation, intrinsic reward loops, and progressive disclosure.",
+      "Portfolio showing playable logic prototypes, interactive narrative boards, or game design documents."
+    ],
+    "sourceLabel": "Curated Creative & Hobby Pathway",
+    "demoOnly": true
+  },
+  {
+    "id": "opp-discord-community-19",
+    "title": "Developer Ecosystem Strategist & Community Event Host",
+    "organisationLabel": "Discord / GitHub (Demo)",
+    "roleFamily": "Community & Developer Relations",
+    "seniorityLabel": "Mid-Level",
+    "workMode": "Remote",
+    "location": "San Francisco / Remote (Worldwide)",
+    "summary": "Foster an active global community of 250,000+ bot creators and open-source developers. Host interactive hackathon streams, organize virtual developer summits, and channel community feedback into core platform pods.",
+    "responsibilities": [
+      "Host live technical AMAs, bot development showcases, and quarterly virtual hackathon ceremonies.",
+      "Design engagement rituals, community contributor recognition tiers, and code-of-conduct moderation guidelines.",
+      "Curate developer spotlight newsletters and coordinate community beta tester roundtables.",
+      "Synthesize top community feature requests and bug trends into monthly product executive briefings."
+    ],
+    "requiredRoleTags": ["Community Strategist", "Developer Advocate", "Community Host"],
+    "adjacentRoleTags": ["Business Analyst", "Product Growth Specialist", "Product Operations Specialist"],
+    "requiredSkillTags": [
+      "Community Building & Event Hosting",
+      "Live AMA & Workshop Facilitation",
+      "Community Sentiment Analysis"
+    ],
+    "preferredSkillTags": [
+      "Stakeholder Management",
+      "Stakeholder Interviewing",
+      "Funnel Drop-off Analysis"
+    ],
+    "hobbyInterests": ["Community Building & Event Hosting", "Creative Writing & Storyboarding"],
+    "pathwayCategory": "hobby",
+    "mustHaves": [
+      "High-energy community presentation skills and genuine empathy for developer and creator communities.",
+      "Experience growing or moderating large-scale online technical communities."
+    ],
+    "sourceLabel": "Curated Creative & Hobby Pathway",
+    "demoOnly": true
   }
 ]

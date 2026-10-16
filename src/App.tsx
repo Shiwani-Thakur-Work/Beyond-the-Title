@@ -42,6 +42,11 @@ export function App() {
     storageService.saveProfile(updated);
   };
 
+  const handleSelectPresetProfile = (profileId: string) => {
+    const updated = storageService.loadProfileById(profileId);
+    setProfile(updated);
+  };
+
   const handleResetToBlank = () => {
     const blank = storageService.resetProfileToBlank();
     setProfile(blank);
@@ -112,6 +117,7 @@ export function App() {
               setActiveTab('profile');
               setProfileViewMode('builder');
             }}
+            onSelectPresetProfile={handleSelectPresetProfile}
           />
         )}
 

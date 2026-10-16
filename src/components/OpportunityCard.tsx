@@ -1,6 +1,19 @@
 import React from 'react';
 import type { Opportunity, MatchAnalysis, RelevanceFeedback } from '../types';
-import { Bookmark, MapPin, ChevronRight, CheckCircle2, AlertCircle, Sparkles, Building2, ThumbsUp, ThumbsDown, HelpCircle } from 'lucide-react';
+import {
+  Bookmark,
+  MapPin,
+  ChevronRight,
+  CheckCircle2,
+  AlertCircle,
+  Sparkles,
+  Building2,
+  ThumbsUp,
+  ThumbsDown,
+  HelpCircle,
+  Palette,
+  Compass,
+} from 'lucide-react';
 
 interface OpportunityCardProps {
   opportunity: Opportunity;
@@ -21,14 +34,22 @@ export const OpportunityCard: React.FC<OpportunityCardProps> = ({
   feedback,
   onQuickFeedback,
 }) => {
-  // Determine Fit Pill styles
+  // Determine Fit Pill styles and icon
   let fitPillColor = 'bg-slate-100 text-slate-700 border-slate-200';
+  let fitIcon = <Sparkles className="w-3 h-3 text-slate-500" />;
+
   if (match.fitDescriptor === 'Primary Role Fit') {
     fitPillColor = 'bg-indigo-50 text-indigo-700 border-indigo-200';
+    fitIcon = <Compass className="w-3 h-3 text-indigo-600" />;
   } else if (match.fitDescriptor === 'Adjacent Role Pivot') {
     fitPillColor = 'bg-violet-50 text-violet-700 border-violet-200';
+    fitIcon = <Sparkles className="w-3 h-3 text-violet-600" />;
+  } else if (match.fitDescriptor === 'Hobby & Creative Exploration') {
+    fitPillColor = 'bg-purple-50 text-purple-800 border-purple-200';
+    fitIcon = <Palette className="w-3 h-3 text-purple-600" />;
   } else if (match.fitDescriptor === 'Emerging Capability Match') {
     fitPillColor = 'bg-emerald-50 text-emerald-800 border-emerald-200';
+    fitIcon = <CheckCircle2 className="w-3 h-3 text-emerald-600" />;
   }
 
   const demonstratedCount = match.matchedWorkCapabilities.length + match.matchedProjectCapabilities.length;
@@ -36,20 +57,43 @@ export const OpportunityCard: React.FC<OpportunityCardProps> = ({
 
   return (
     <article
-      className="bg-white rounded-2xl border border-slate-200/90 hover:border-indigo-300 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between overflow-hidden group"
+      className={`bg-white rounded-2xl border transition-all duration-200 flex flex-col justify-between overflow-hidden group shadow-xs hover:shadow-md ${
+        match.fitDescriptor === 'Hobby & Creative Exploration'
+          ? 'border-purple-200/90 hover:border-purple-400'
+          : match.fitDescriptor === 'Adjacent Role Pivot'
+          ? 'border-violet-200/90 hover:border-violet-400'
+          : 'border-slate-200/90 hover:border-indigo-300'
+      }`}
       id={`opp-card-${opportunity.id}`}
     >
       <div className="p-5 sm:p-6">
-        {/* Top Badges */}
+        {/* Top Badges & Pathway Indicator */}
         <div className="flex items-center justify-between gap-2 mb-3">
           <div className="flex items-center gap-1.5 flex-wrap">
-            <span className="text-[11px] font-semibold text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-md flex items-center gap-1 border border-slate-200">
+            <span className="text-[11px] font-semibold text-slate-600 bg-slate-100 px-2.5 py-0.5 rounded-md flex items-center gap-1 border border-slate-200">
               <Building2 className="w-3 h-3 text-slate-400" />
               {opportunity.organisationLabel}
             </span>
-            <span className="text-[10px] uppercase font-bold tracking-wider text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-200">
-              Curated Role
-            </span>
+
+            {/* Pathway Tag */}
+            {match.isHobbyFit ? (
+              <span className="text-[10px] uppercase font-bold tracking-wider text-purple-700 bg-purple-50 px-2 py-0.5 rounded-md border border-purple-200 flex items-center gap-1">
+                <Palette className="w-2.5 h-2.5 text-purple-600" />
+                Hobby Pathway
+              </span>
+            ) : match.isAdjacentFit ? (
+              <span className="text-[10px] uppercase font-bold tracking-wider text-violet-700 bg-violet-50 px-2 py-0.5 rounded-md border border-violet-200">
+                Adjacent Pivot
+              </span>
+            ) : match.isPrimaryFit ? (
+              <span className="text-[10px] uppercase font-bold tracking-wider text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-200">
+                Primary Target
+              </span>
+            ) : (
+              <span className="text-[10px] uppercase font-bold tracking-wider text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200">
+                Exploration
+              </span>
+            )}
           </div>
 
           <button
@@ -70,7 +114,7 @@ export const OpportunityCard: React.FC<OpportunityCardProps> = ({
           </button>
         </div>
 
-        {/* Title & Category */}
+        {/* Title */}
         <h3
           onClick={onSelect}
           className="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors cursor-pointer tracking-tight mb-1"
@@ -79,7 +123,7 @@ export const OpportunityCard: React.FC<OpportunityCardProps> = ({
         </h3>
 
         {/* Metadata Row */}
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500 mb-4">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500 mb-3">
           <span className="font-semibold text-slate-700">{opportunity.roleFamily}</span>
           <span>•</span>
           <span>{opportunity.seniorityLabel}</span>
@@ -96,15 +140,21 @@ export const OpportunityCard: React.FC<OpportunityCardProps> = ({
         </p>
 
         {/* Deterministic Match Box */}
-        <div className="p-3.5 bg-slate-50/90 rounded-xl border border-slate-200/80 mb-4 space-y-2">
-          <div className="flex items-center justify-between">
+        <div className={`p-3.5 rounded-xl border mb-4 space-y-2 ${
+          match.fitDescriptor === 'Hobby & Creative Exploration'
+            ? 'bg-purple-50/50 border-purple-100'
+            : match.fitDescriptor === 'Adjacent Role Pivot'
+            ? 'bg-violet-50/50 border-violet-100'
+            : 'bg-slate-50/90 border-slate-200/80'
+        }`}>
+          <div className="flex items-center justify-between gap-2 flex-wrap">
             <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${fitPillColor} flex items-center gap-1`}>
-              <Sparkles className="w-3 h-3" />
+              {fitIcon}
               {match.fitDescriptor}
             </span>
 
             <div className="text-[11px] font-semibold text-slate-500">
-              {demonstratedCount} aligned • {missingCount} missing
+              {demonstratedCount} verified • {missingCount} missing
             </div>
           </div>
 
@@ -112,9 +162,22 @@ export const OpportunityCard: React.FC<OpportunityCardProps> = ({
             {match.explanationSummary}
           </p>
 
-          {/* Quick pills for demonstrated vs missing */}
+          {/* Overlap tags */}
           <div className="flex flex-wrap gap-1.5 pt-1">
-            {match.matchedWorkCapabilities.slice(0, 2).map((item, idx) => {
+            {match.isHobbyFit && match.matchedHobbyName && (
+              <span className="text-[11px] font-medium bg-purple-100/80 text-purple-900 border border-purple-200 px-2 py-0.5 rounded-md flex items-center gap-1">
+                <Palette className="w-3 h-3 text-purple-600" />
+                Hobby: {match.matchedHobbyName}
+              </span>
+            )}
+
+            {match.isAdjacentFit && match.matchedAdjacentRoleName && (
+              <span className="text-[11px] font-medium bg-violet-100/80 text-violet-900 border border-violet-200 px-2 py-0.5 rounded-md flex items-center gap-1">
+                🔄 Pivot via: {match.matchedAdjacentRoleName}
+              </span>
+            )}
+
+            {match.matchedWorkCapabilities.slice(0, 1).map((item, idx) => {
               const label = item.split('(')[0].trim();
               return (
                 <span

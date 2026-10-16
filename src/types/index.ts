@@ -26,6 +26,20 @@ export interface CandidateProfile {
   updatedAt: string;
 }
 
+export type FitDescriptor =
+  | 'Primary Role Fit'
+  | 'Adjacent Role Pivot'
+  | 'Hobby & Creative Exploration'
+  | 'Emerging Capability Match'
+  | 'Distinct Exploration';
+
+export type PathwayFilter =
+  | 'all'
+  | 'primary'
+  | 'adjacent'
+  | 'hobby'
+  | 'skill-bridge';
+
 export interface Opportunity {
   id: string;
   title: string;
@@ -41,6 +55,8 @@ export interface Opportunity {
   requiredSkillTags: string[];
   preferredSkillTags: string[];
   mustHaves: string[];
+  hobbyInterests?: string[]; // Creative/hobby interests that directly connect (e.g. "Voiceover & Audio Narration", "Technical Illustration & Diagrams")
+  pathwayCategory?: 'primary' | 'adjacent' | 'hobby' | 'hybrid';
   sourceLabel: string; // "Fictional Demonstration Listing"
   demoOnly: boolean; // true
 }
@@ -70,9 +86,15 @@ export interface MatchAnalysis {
   missingRequiredCapabilities: string[];
   missingPreferredCapabilities: string[];
   interestOverlaps: string[];
-  fitDescriptor: 'Primary Role Fit' | 'Adjacent Role Pivot' | 'Emerging Capability Match' | 'Distinct Exploration';
+  fitDescriptor: FitDescriptor;
   explanationSummary: string;
   detailedCaveats: string[];
+  isPrimaryFit: boolean;
+  isAdjacentFit: boolean;
+  isHobbyFit: boolean;
+  isSkillBridgeFit: boolean;
+  matchedHobbyName?: string;
+  matchedAdjacentRoleName?: string;
 }
 
 export interface RoleTaxonomyOption {
@@ -81,3 +103,4 @@ export interface RoleTaxonomyOption {
   commonAdjacent: string[];
   suggestedCapabilities: string[];
 }
+

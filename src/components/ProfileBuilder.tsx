@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { CandidateProfile, CapabilityEntry, EvidenceType, SeniorityLevel } from '../types';
 import { ROLE_TAXONOMY, CREATIVE_INTEREST_SUGGESTIONS } from '../data/taxonomy';
 import { SAMPLE_PROFILES } from '../data/sampleProfiles';
@@ -25,6 +25,18 @@ export const ProfileBuilder: React.FC<ProfileBuilderProps> = ({
   const [additionalInterests, setAdditionalInterests] = useState<string[]>(profile.additionalInterests || []);
   const [workMode, setWorkMode] = useState<CandidateProfile['workModePreference']>(profile.workModePreference || 'Any');
   const [seniority, setSeniority] = useState<SeniorityLevel>(profile.seniorityLevel || 'Mid-Level');
+
+  // Sync state whenever profile prop updates (e.g. from preset selection or import)
+  useEffect(() => {
+    setName(profile.name || '');
+    setHeadline(profile.titleHeadline || '');
+    setPrimaryRole(profile.primaryRole || '');
+    setAdjacentRoles(profile.adjacentRoles || []);
+    setCapabilities(profile.capabilities || []);
+    setAdditionalInterests(profile.additionalInterests || []);
+    setWorkMode(profile.workModePreference || 'Any');
+    setSeniority(profile.seniorityLevel || 'Mid-Level');
+  }, [profile]);
 
   // Capability form inputs
   const [newCapLabel, setNewCapLabel] = useState('');
@@ -142,18 +154,19 @@ export const ProfileBuilder: React.FC<ProfileBuilderProps> = ({
 
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Presets:</span>
-            <button
-              onClick={() => loadPreset(0)}
-              className="text-xs font-medium bg-white hover:bg-slate-50 text-indigo-700 px-3 py-1.5 rounded-lg border border-indigo-200 shadow-xs transition-colors"
-            >
-              Maya Chen (PM Pivot)
-            </button>
-            <button
-              onClick={() => loadPreset(1)}
-              className="text-xs font-medium bg-white hover:bg-slate-50 text-indigo-700 px-3 py-1.5 rounded-lg border border-indigo-200 shadow-xs transition-colors"
-            >
-              Kiran Patel (ProdOps)
-            </button>
+            {SAMPLE_PROFILES.map((sample, idx) => (
+              <button
+                key={sample.id}
+                onClick={() => loadPreset(idx)}
+                className={`text-xs font-medium px-3 py-1.5 rounded-lg border shadow-xs transition-colors ${
+                  profile.name === sample.profile.name
+                    ? 'bg-indigo-600 text-white border-indigo-600 font-semibold'
+                    : 'bg-white hover:bg-slate-50 text-indigo-700 border-indigo-200'
+                }`}
+              >
+                {sample.shortName}
+              </button>
+            ))}
             <button
               onClick={onResetToBlank}
               className="text-xs font-medium bg-white hover:bg-rose-50 text-rose-600 px-3 py-1.5 rounded-lg border border-rose-200 shadow-xs transition-colors flex items-center gap-1"

@@ -1,13 +1,25 @@
 import type { CandidateProfile } from '../types';
 
-export const SAMPLE_PROFILES: { label: string; description: string; profile: CandidateProfile }[] = [
+export interface SampleProfileOption {
+  id: string;
+  shortName: string;
+  label: string;
+  tagline: string;
+  description: string;
+  profile: CandidateProfile;
+}
+
+export const SAMPLE_PROFILES: SampleProfileOption[] = [
   {
-    label: 'Maya Chen (Product Manager exploring Product Operations & Analytics)',
-    description: 'Mid-level PM with strong PRD and stakeholder skills, looking to discover adjacent roles in ProdOps and Business Analysis while learning SQL.',
+    id: 'profile-maya-chen',
+    shortName: 'Maya Chen',
+    tagline: 'PM • Exploring ProdOps & Voiceover/Illustration',
+    label: 'Maya Chen (Product Manager exploring Product Operations & Voice/Art)',
+    description: 'Mid-level PM with strong PRD and discovery skills, looking to discover adjacent roles in ProdOps and Business Analysis, with passions in Voiceover and Technical Illustration.',
     profile: {
       id: 'profile-maya-chen',
       name: 'Maya Chen',
-      titleHeadline: 'Associate PM transitioning into Product Operations & Systems',
+      titleHeadline: 'Associate PM transitioning into Product Operations & Creative Systems',
       primaryRole: 'Product Manager',
       adjacentRoles: ['Product Operations Specialist', 'Business Analyst'],
       capabilities: [
@@ -65,8 +77,11 @@ export const SAMPLE_PROFILES: { label: string; description: string; profile: Can
     },
   },
   {
-    label: 'Kiran Patel (Product Operations seeking Technical Coordination)',
-    description: 'Operations specialist with deep process documentation and tool admin skills, exploring Technical Project Coordination.',
+    id: 'profile-kiran-patel',
+    shortName: 'Kiran Patel',
+    tagline: 'ProdOps • Exploring Tech Coordination & Podcasting',
+    label: 'Kiran Patel (Product Operations seeking Technical Coordination & Audio)',
+    description: 'Operations specialist with deep process documentation and tool admin habits, exploring Technical Project Coordination and Implementation with creative interest in Podcast Production.',
     profile: {
       id: 'profile-kiran-patel',
       name: 'Kiran Patel',
@@ -117,6 +132,126 @@ export const SAMPLE_PROFILES: { label: string; description: string; profile: Can
       ],
       workModePreference: 'Hybrid',
       seniorityLevel: 'Mid-Level',
+      visibility: 'private-demo',
+      updatedAt: new Date().toISOString(),
+    },
+  },
+  {
+    id: 'profile-elena-rostova',
+    shortName: 'Elena Rostova',
+    tagline: 'Tech Coordinator • Exploring Scrum & Game Storyboarding',
+    label: 'Elena Rostova (Technical Project Coordinator exploring Scrum & Game Design)',
+    description: 'Project Coordinator skilled in engineering dependencies and sprint execution, looking into Scrum Master and ProdOps pivots, with creative passion in Game Design & Storyboarding.',
+    profile: {
+      id: 'profile-elena-rostova',
+      name: 'Elena Rostova',
+      titleHeadline: 'Technical Project Coordinator bridging engineering sprints and interactive media',
+      primaryRole: 'Technical Project Coordinator',
+      adjacentRoles: ['Scrum Master', 'Product Operations Specialist'],
+      capabilities: [
+        {
+          id: 'cap-e1',
+          label: 'Sprint Schedule Coordination',
+          evidenceType: 'work',
+          optionalContext: 'Orchestrated quarterly release gates across 14 distributed service squads',
+        },
+        {
+          id: 'cap-e2',
+          label: 'Issue & Dependency Tracking',
+          evidenceType: 'work',
+          optionalContext: 'Maintained critical-path dependency matrix in Linear for migration project',
+        },
+        {
+          id: 'cap-e3',
+          label: 'Technical Documentation',
+          evidenceType: 'work',
+          optionalContext: 'Drafted deployment checklists and rollback runbooks for DevOps pipelines',
+        },
+        {
+          id: 'cap-e4',
+          label: 'Risk Assessment & Mitigation',
+          evidenceType: 'project',
+          optionalContext: 'Led post-mortem RCA action tracking and vulnerability SLA enforcement',
+        },
+        {
+          id: 'cap-e5',
+          label: 'Cross-team Sync Facilitation',
+          evidenceType: 'work',
+          optionalContext: 'Chaired daily standups and bi-weekly release readiness syncs',
+        },
+        {
+          id: 'cap-e6',
+          label: 'Growth Experiment Design',
+          evidenceType: 'learning',
+          optionalContext: 'Studying user engagement loops and onboarding experimentation',
+        },
+      ],
+      additionalInterests: [
+        'Creative Writing & Storyboarding',
+        'Game Design & Mechanics',
+      ],
+      workModePreference: 'Remote',
+      seniorityLevel: 'Mid-Level',
+      visibility: 'private-demo',
+      updatedAt: new Date().toISOString(),
+    },
+  },
+  {
+    id: 'profile-devon-miller',
+    shortName: 'Devon Miller',
+    tagline: 'Business Analyst • Exploring Solutions & Community',
+    label: 'Devon Miller (Business Analyst exploring Solutions & Community Hosting)',
+    description: 'Senior Business Analyst with rigorous process modeling and functional spec habits, seeking Solutions Consultant and Product Growth pivots, with passion in Community Building & Events.',
+    profile: {
+      id: 'profile-devon-miller',
+      name: 'Devon Miller',
+      titleHeadline: 'Business Analyst modeling high-throughput operational flows and ecosystems',
+      primaryRole: 'Business Analyst',
+      adjacentRoles: ['Solutions Consultant', 'Product Growth Specialist'],
+      capabilities: [
+        {
+          id: 'cap-d1',
+          label: 'Business Process Mapping',
+          evidenceType: 'work',
+          optionalContext: 'Modeled end-to-end multi-currency invoicing flow across 5 internal microservices',
+        },
+        {
+          id: 'cap-d2',
+          label: 'Requirements Gathering & Functional Specs',
+          evidenceType: 'work',
+          optionalContext: 'Authored 30+ functional requirement documents with state machine diagrams',
+        },
+        {
+          id: 'cap-d3',
+          label: 'Data Modeling & SQL Queries',
+          evidenceType: 'work',
+          optionalContext: 'Wrote complex CTE queries to reconcile payment discrepancies across DBs',
+        },
+        {
+          id: 'cap-d4',
+          label: 'Acceptance Criteria Definition',
+          evidenceType: 'work',
+          optionalContext: 'Defined Gherkin BDD test scenarios for automated QA pipelines',
+        },
+        {
+          id: 'cap-d5',
+          label: 'Client Onboarding Architecture',
+          evidenceType: 'project',
+          optionalContext: 'Designed interactive onboarding playground for pilot enterprise partners',
+        },
+        {
+          id: 'cap-d6',
+          label: 'API & Webhook Troubleshooting',
+          evidenceType: 'learning',
+          optionalContext: 'Learning Postman collection scripting and webhook signature verification',
+        },
+      ],
+      additionalInterests: [
+        'Community Building & Event Hosting',
+        'Technical Illustration & Diagrams',
+      ],
+      workModePreference: 'Hybrid',
+      seniorityLevel: 'Senior',
       visibility: 'private-demo',
       updatedAt: new Date().toISOString(),
     },
