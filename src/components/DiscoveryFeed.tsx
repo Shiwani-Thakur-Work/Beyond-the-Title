@@ -1,3 +1,20 @@
+/**
+ * @file DiscoveryFeed.tsx
+ * @description Central multidirectional exploration hub for Beyond the Title.
+ * 
+ * Functional Architecture:
+ * - Multi-Pathway Segregation: Organizes discovery across distinct tabs:
+ *   1. All Opportunities (Global catalogue)
+ *   2. Primary Target (Roles aligning with candidate's primary ambition)
+ *   3. Adjacent Pivots (Transferable functional intersections)
+ *   4. Hobby & Creative (Passion projects and creative domain alignments)
+ *   5. Skill Bridges (Roles matching candidate's active learning goals or high-evidence intersections)
+ * - Persona Switcher: Dynamically re-runs the deterministic matching engine against
+ *   both curated benchmark personas and custom candidate profiles without page reloads.
+ * - Reactive Filtering: Search query tokenizer, role family categorization,
+ *   work arrangement filters, and seniority preferences.
+ */
+
 import React, { useState, useMemo } from 'react';
 import type { Opportunity, MatchAnalysis, SavedOpportunity, RelevanceFeedback, CandidateProfile, PathwayFilter } from '../types';
 import { OpportunityCard } from './OpportunityCard';
@@ -17,16 +34,29 @@ import {
   ArrowRight,
 } from 'lucide-react';
 
+/**
+ * Properties for DiscoveryFeed component.
+ */
 interface DiscoveryFeedProps {
+  /** Complete catalogue of curated demonstration opportunities */
   opportunities: Opportunity[];
+  /** Map of opportunity ID to precomputed deterministic MatchAnalysis records */
   matches: Record<string, MatchAnalysis>;
+  /** Active candidate profile being evaluated */
   profile: CandidateProfile;
+  /** List of bookmarked opportunity records */
   savedItems: SavedOpportunity[];
+  /** Bookmark toggle callback */
   onToggleSave: (oppId: string) => void;
+  /** Opportunity card selection handler (opens inspection modal) */
   onSelectOpportunity: (opp: Opportunity) => void;
+  /** Map of opportunity ID to recorded relevance evaluations */
   feedbackMap: Record<string, RelevanceFeedback>;
+  /** Quick inline relevance feedback dispatcher */
   onQuickFeedback: (oppId: string, rating: 'relevant' | 'not-relevant' | 'unsure') => void;
+  /** Navigation callback to the Profile Builder tab */
   onNavigateToProfile: () => void;
+  /** Active persona switcher callback */
   onSelectPresetProfile: (profileId: string) => void;
 }
 

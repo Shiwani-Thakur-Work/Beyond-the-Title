@@ -1,14 +1,38 @@
+/**
+ * @file ProfileBuilder.tsx
+ * @description Interactive multidirectional profile authoring interface.
+ * 
+ * Capabilities:
+ * - Multidirectional Career Direction: Allows candidates to declare an anchor primary
+ *   role target alongside up to three transferable adjacent roles.
+ * - Tri-Tier Capability Evidence: Classifies skills by verified evidence level:
+ *   1. 'work' (professional battle-tested experience)
+ *   2. 'project' (side projects, open-source, or portfolio builds)
+ *   3. 'learning' (active study and upskilling goals)
+ * - Creative Interests & Hobbies: Structured domain affinity tagging that informs
+ *   cultural alignment and creative pathway exploration without masquerading as hard qualifications.
+ * - Local Sovereign Storage: Real-time synchronization to browser localStorage.
+ */
+
 import React, { useState, useEffect } from 'react';
 import type { CandidateProfile, CapabilityEntry, EvidenceType, SeniorityLevel } from '../types';
 import { ROLE_TAXONOMY, CREATIVE_INTEREST_SUGGESTIONS } from '../data/taxonomy';
 import { SAMPLE_PROFILES } from '../data/sampleProfiles';
 import { Plus, X, Sparkles, Briefcase, FolderGit2, GraduationCap, Heart, CheckCircle2, RotateCcw, ArrowRight } from 'lucide-react';
 
+/**
+ * Properties for ProfileBuilder component.
+ */
 interface ProfileBuilderProps {
+  /** Active candidate profile being edited */
   profile: CandidateProfile;
+  /** State update dispatcher called whenever profile attributes change */
   onUpdateProfile: (updated: CandidateProfile) => void;
+  /** Navigation callback to the Recruiter Perspective Preview */
   onViewPreview: () => void;
+  /** Profile reset handler to restore an empty template */
   onResetToBlank: () => void;
+  /** Optional navigation callback to transition directly to Discovery Feed */
   onExploreFeed?: () => void;
 }
 

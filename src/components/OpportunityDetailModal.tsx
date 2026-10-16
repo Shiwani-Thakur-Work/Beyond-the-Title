@@ -1,3 +1,18 @@
+/**
+ * @file OpportunityDetailModal.tsx
+ * @description Comprehensive inspection dialog for a curated job opportunity.
+ * 
+ * Key Capabilities:
+ * - Deterministic Match Breakdown: Renders explicit evidence tiers (work experience,
+ *   personal projects, active learning goals, creative hobbies) supporting the match.
+ * - Missing Requirements Audit: Directly exposes required and preferred qualifications
+ *   that are unrepresented on the candidate profile.
+ * - Structured Relevance Telemetry: Collects candidate sentiment (Relevant, Unsure,
+ *   Not Relevant), structured reason codes, and subjective notes.
+ * - Demonstration Transparency Notice: Clearly states the curated demonstration nature
+ *   of the listing and directs candidates to official employer portals.
+ */
+
 import React, { useState } from 'react';
 import type { Opportunity, MatchAnalysis, RelevanceFeedback, RelevanceRating } from '../types';
 import {
@@ -18,16 +33,27 @@ import {
   Info,
 } from 'lucide-react';
 
+/**
+ * Properties for OpportunityDetailModal component.
+ */
 interface OpportunityDetailModalProps {
+  /** The curated demonstration opportunity being inspected */
   opportunity: Opportunity;
+  /** Deterministic match evaluation output for the active candidate profile */
   match: MatchAnalysis;
+  /** Whether this opportunity is currently bookmarked in localStorage */
   isSaved: boolean;
+  /** Bookmark toggle callback */
   onToggleSave: () => void;
+  /** Existing candidate relevance feedback if previously recorded */
   feedback?: RelevanceFeedback;
+  /** Feedback persistence callback */
   onSaveFeedback: (feedback: RelevanceFeedback) => void;
+  /** Modal dismissal handler */
   onClose: () => void;
 }
 
+/** Predefined taxonomy of reasons for relevance evaluation */
 const RELEVANCE_REASONS = [
   'Matches my transferable skills well',
   'Connects nicely with my adjacent career direction',

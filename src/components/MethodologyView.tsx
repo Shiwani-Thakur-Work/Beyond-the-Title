@@ -140,21 +140,27 @@ export const MethodologyView: React.FC = () => {
           </div>
         </section>
 
-        {/* 5. Known Limitations & Out of Scope */}
+        {/* 5. Known Limitations & Data Provenance */}
         <section className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-xs">
           <div className="flex items-center gap-2 mb-3">
             <AlertCircle className="w-5 h-5 text-amber-600" />
-            <h2 className="text-lg font-bold text-slate-900">5. Known Limitations & Boundary Decisions</h2>
+            <h2 className="text-lg font-bold text-slate-900">5. Data Provenance, Demonstration Status & Boundary Decisions</h2>
           </div>
-          <div className="space-y-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
+          <div className="space-y-3.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
             <p>
-              <strong>Employer-side unvalidated:</strong> While candidate user interviews suggest strong appetite for showing adjacent directions, employer hiring manager willingness to accept non-linear titles remains an unvalidated hypothesis.
+              <strong>Data Provenance & Demonstration Nature:</strong> The opportunity catalogue consists of 18 structured demonstration listings across Primary, Adjacent, and Creative pathways. These records are intentionally modeled on real-world competency frameworks and role descriptions from leading product-led organisations (e.g., Stripe, Linear, Notion, Figma, Spotify, Canva, Razorpay, Swiggy, Duolingo, Substack). They serve as a rigorous benchmark dataset to evaluate multidirectional matching hypotheses rather than representing a live external job board feed or scraping integration.
             </p>
             <p>
-              <strong>Curated Industry Dataset:</strong> The project evaluates 12 curated industry opportunities across tier-one product organizations (Stripe, Linear, Notion, Figma, Spotify, Razorpay, Atlassian, Airbnb, Swiggy, Datadog, Duolingo, Canva) to demonstrate realistic capability matching.
+              <strong>Rationale for Curated Data over Live Scraping:</strong> Conventional job-board scraping APIs introduce external network dependencies, rate limits, and fragile schema fluctuations. A curated benchmark dataset ensures 100% deterministic auditability, zero user tracking, and an environment where transferable capabilities and missing requirements can be verified with exact precision.
             </p>
             <p>
-              <strong>Local Browser Persistence:</strong> Data is saved in the browser’s `localStorage`. No server database or authentication is implemented in order to keep the project completely free, private, and deployable to static hosting tiers.
+              <strong>Candidate Protection:</strong> Every opportunity includes an explicit <code>isDemoListing: true</code> flag and interface disclaimers clarifying that the application does not submit live candidate applications to external hiring portals.
+            </p>
+            <p>
+              <strong>Local Sovereign Storage:</strong> Candidate profiles, bookmarks, and relevance telemetry persist entirely within the browser's <code>localStorage</code>. No remote database or analytics trackers are deployed, upholding total candidate privacy and zero hosting overhead.
+            </p>
+            <p>
+              <strong>Employer-Side Evaluation:</strong> While candidate qualitative testing demonstrated strong demand for multidirectional representation, employer-side willingness to formally screen candidates across non-linear titles remains an active hypothesis for future research.
             </p>
           </div>
         </section>

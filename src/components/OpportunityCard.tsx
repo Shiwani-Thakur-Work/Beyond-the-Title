@@ -1,3 +1,18 @@
+/**
+ * @file OpportunityCard.tsx
+ * @description Compact discovery feed card presenting an opportunity alongside
+ * transparent multidirectional match indicators.
+ * 
+ * Features:
+ * - Dimensional Fit Indicator: Visually signals whether an opportunity matches primary,
+ *   adjacent, or creative hobby pathways.
+ * - Evidence & Gap Accounting: Explicitly displays the count of verified capabilities
+ *   and unrepresented required qualifications.
+ * - In-Feed Relevance Telemetry: Allows candidates to rate recommendation accuracy
+ *   (Relevant / Unsure / Not Relevant) directly from the feed.
+ * - Sovereign Bookmark Control: Direct toggle for saving items to localStorage.
+ */
+
 import React from 'react';
 import type { Opportunity, MatchAnalysis, RelevanceFeedback } from '../types';
 import {
@@ -15,13 +30,23 @@ import {
   Compass,
 } from 'lucide-react';
 
+/**
+ * Properties for OpportunityCard component.
+ */
 interface OpportunityCardProps {
+  /** The curated demonstration opportunity record */
   opportunity: Opportunity;
+  /** Deterministic match evaluation output for the active candidate profile */
   match: MatchAnalysis;
+  /** Whether this opportunity is currently bookmarked in localStorage */
   isSaved: boolean;
+  /** Bookmark toggle callback */
   onToggleSave: () => void;
+  /** Modal detail view selection callback */
   onSelect: () => void;
+  /** Existing candidate relevance feedback if previously recorded */
   feedback?: RelevanceFeedback;
+  /** Inline one-click relevance rating dispatcher */
   onQuickFeedback?: (rating: 'relevant' | 'not-relevant' | 'unsure') => void;
 }
 
@@ -34,7 +59,7 @@ export const OpportunityCard: React.FC<OpportunityCardProps> = ({
   feedback,
   onQuickFeedback,
 }) => {
-  // Determine Fit Pill styles and icon
+  // Determine Fit Pill styles and icon based on deterministic descriptor
   let fitPillColor = 'bg-slate-100 text-slate-700 border-slate-200';
   let fitIcon = <Sparkles className="w-3 h-3 text-slate-500" />;
 

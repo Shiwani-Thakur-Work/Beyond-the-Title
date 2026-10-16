@@ -1,14 +1,35 @@
+/**
+ * @file matchingEngine.ts
+ * @description Deterministic multidirectional matching engine for Beyond the Title.
+ * 
+ * Architectural Philosophy:
+ * - Deterministic & Verifiable: Avoids opaque percentage scores ("87% match") or stochastic black-box ML.
+ * - Evidence-Graded: Distinguishes between production work experience, personal projects, and learning goals.
+ * - Multidirectional: Simultaneously evaluates primary career targets, adjacent pivots, and creative passions.
+ * - Transparent Gaps: Directly audits and surfaces missing role requirements rather than obscuring deficiencies.
+ */
+
 import type { CandidateProfile, Opportunity, MatchAnalysis, FitDescriptor } from '../types';
 
 /**
- * Normalizes text for clean keyword/phrase overlap matching
+ * Normalizes text strings for clean, case-insensitive token and keyword comparison.
+ * Strips punctuation and collapses consecutive whitespace characters.
+ *
+ * @param str - The raw input string to normalize.
+ * @returns A sanitized, lowercase token string.
  */
 function normalize(str: string): string {
   return str.toLowerCase().replace(/[^a-z0-9]/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
 /**
- * Checks if a candidate capability label matches a requirement tag
+ * Evaluates semantic and token-level overlap between a candidate's capability label
+ * and an opportunity requirement tag. Supports exact matches, substrings, acronyms,
+ * and multi-token intersections.
+ *
+ * @param candidateLabel - Capability string supplied by the candidate (e.g., "SQL Data Analysis").
+ * @param opportunityTag - Standardized requirement tag from the opportunity schema (e.g., "SQL").
+ * @returns True if a valid match is identified; otherwise false.
  */
 function isCapabilityMatch(candidateLabel: string, opportunityTag: string): boolean {
   if (!candidateLabel || !opportunityTag) return false;
@@ -32,7 +53,11 @@ function isCapabilityMatch(candidateLabel: string, opportunityTag: string): bool
 }
 
 /**
- * Checks if a candidate role matches an opportunity role tag
+ * Compares candidate role titles against opportunity role taxonomy tags.
+ *
+ * @param candidateRole - Primary or adjacent role title from candidate profile.
+ * @param roleTag - Required or adjacent role classification tag from the opportunity.
+ * @returns True if the candidate role aligns with the target role taxonomy tag.
  */
 function isRoleMatch(candidateRole: string, roleTag: string): boolean {
   if (!candidateRole || !roleTag) return false;
@@ -41,6 +66,22 @@ function isRoleMatch(candidateRole: string, roleTag: string): boolean {
   return cNorm === rNorm || cNorm.includes(rNorm) || rNorm.includes(cNorm);
 }
 
+/**
+ * Performs a comprehensive 6-pass deterministic match analysis between a candidate profile
+ * and a curated job opportunity.
+ *
+ * Evaluation Pipeline:
+ * 1. Role Overlap Analysis (Primary vs. Adjacent taxonomy alignment)
+ * 2. Tri-Tier Capability Evidence Audit (Work vs. Project vs. Learning goals)
+ * 3. Domain Interest & Creative Hobby Affinity Detection
+ * 4. Multi-Pathway Categorization Flags (Primary, Adjacent, Hobby, Skill Bridge)
+ * 5. Honest Fit Descriptor Assignment
+ * 6. Explainable Rationale Generation & Unmet Requirements Disclosure
+ *
+ * @param profile - The structured candidate profile containing evidence-graded capabilities.
+ * @param opportunity - The target opportunity schema containing requirements and role tags.
+ * @returns A structured MatchAnalysis object detailing alignment, gaps, and human-readable reasoning.
+ */
 export function analyzeOpportunityMatch(
   profile: CandidateProfile,
   opportunity: Opportunity
@@ -49,7 +90,9 @@ export function analyzeOpportunityMatch(
   const adjacentRoles = profile.adjacentRoles || [];
   const candidateInterests = profile.additionalInterests || [];
 
-  // 1. Role Overlap Analysis
+  // ==========================================
+  // Pass 1: Role Taxonomy Overlap Analysis
+  // ==========================================
   let roleMatch: 'primary' | 'adjacent' | 'unrelated' = 'unrelated';
   let matchedRoleName = '';
   let matchedAdjacentRoleName = '';
@@ -81,7 +124,13 @@ export function analyzeOpportunityMatch(
     }
   }
 
-  // 2. Capabilities Categorization
+  // ==========================================
+  // Pass 2: Tri-Tier Capability Evidence Audit
+  // ==========================================
+  // Segregates candidate capabilities by verified evidence level:
+  // - 'work': Professional on-the-job execution
+  // - 'project': Independent, freelance, or open-source builds
+  // - 'learning': Active study or upskilling targets
   const workCapabilities = profile.capabilities?.filter((c) => c.evidenceType === 'work') || [];
   const projectCapabilities = profile.capabilities?.filter((c) => c.evidenceType === 'project') || [];
   const learningCapabilitiesList = profile.capabilities?.filter((c) => c.evidenceType === 'learning') || [];
@@ -95,7 +144,7 @@ export function analyzeOpportunityMatch(
   const allOppRequired = opportunity.requiredSkillTags || [];
   const allOppPreferred = opportunity.preferredSkillTags || [];
 
-  // Evaluate Required Skills
+  // Evaluate Required Skills against verified evidence hierarchy
   for (const reqTag of allOppRequired) {
     const matchedWork = workCapabilities.find((c) => isCapabilityMatch(c.label, reqTag));
     if (matchedWork) {
@@ -116,11 +165,11 @@ export function analyzeOpportunityMatch(
       continue;
     }
 
-    // Completely unrepresented
+    // Completely unrepresented in profile
     missingRequiredCapabilities.push(reqTag);
   }
 
-  // Evaluate Preferred Skills
+  // Evaluate Preferred/Nice-to-Have Skills
   for (const prefTag of allOppPreferred) {
     const matchedWork = workCapabilities.find((c) => isCapabilityMatch(c.label, prefTag));
     if (matchedWork) {
@@ -143,7 +192,9 @@ export function analyzeOpportunityMatch(
     missingPreferredCapabilities.push(prefTag);
   }
 
-  // 3. Creative / Personal Interest & Hobby overlap
+  // ==========================================
+  // Pass 3: Creative Domain & Hobby Affinity
+  // ==========================================
   const interestOverlaps: string[] = [];
   let matchedHobbyName: string | undefined = undefined;
 
@@ -165,7 +216,9 @@ export function analyzeOpportunityMatch(
 
   const demonstratedCount = matchedWorkCapabilities.length + matchedProjectCapabilities.length;
 
-  // 4. Calculate Pathway Flags
+  // ==========================================
+  // Pass 4: Dimensional Pathway Classification
+  // ==========================================
   const isHobbyFit: boolean = Boolean(
     interestOverlaps.length > 0 &&
     (opportunity.pathwayCategory === 'hobby' || (opportunity.hobbyInterests && opportunity.hobbyInterests.length > 0))
@@ -186,7 +239,9 @@ export function analyzeOpportunityMatch(
     demonstratedCount >= 2 || learningCapabilities.length >= 1
   );
 
-  // 5. Determine Honest Fit Descriptor
+  // ==========================================
+  // Pass 5: Honest Fit Descriptor Assignment
+  // ==========================================
   let fitDescriptor: FitDescriptor = 'Distinct Exploration';
 
   if (isHobbyFit) {
@@ -201,7 +256,9 @@ export function analyzeOpportunityMatch(
     fitDescriptor = 'Distinct Exploration';
   }
 
-  // 6. Plain-Language Explanation Generation
+  // ==========================================
+  // Pass 6: Plain-Language Rationale & Gap Audit
+  // ==========================================
   const explanationParts: string[] = [];
   const detailedCaveats: string[] = [];
 

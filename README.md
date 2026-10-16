@@ -25,10 +25,24 @@ Most modern job boards trap people behind a single historical job title. If your
 
 - **Multidirectional Profile Builder:** Choose a primary target role, select transferable adjacent directions, and organize capabilities with evidence classifications.
 - **Explainable Matching Engine:** Deterministic matching logic that compares candidate evidence against opportunity requirements and surfaces transparent explanations without black-box scores.
-- **Curated Industry Opportunities:** Explore 12 realistic roles across companies like Stripe, Linear, Notion, Figma, Spotify, Razorpay, Atlassian, Airbnb, Swiggy, Datadog, Duolingo, and Canva.
+- **Curated Benchmark Opportunities:** Explore 18 structured roles across primary, adjacent, and creative pathways modeled after product organizations like Stripe, Linear, Notion, Figma, Spotify, Canva, Razorpay, Atlassian, Airbnb, Swiggy, Datadog, Duolingo, and Substack.
+- **Multi-Pathway Filtering:** Instant discovery views for Primary Target, Adjacent Pivots, Hobby & Creative alignments, and Skill Bridges.
 - **Relevance Feedback Loop:** Mark recommendations as Relevant, Unsure, or Not Relevant with structured reason tags to evaluate discovery accuracy.
 - **Recruiter Perspective View:** A dedicated view showing how hiring managers and screeners can read multidirectional profiles to spot transferable talent quickly.
 - **Client-Side Data Ownership:** All data stays in your browser. Export backup data as JSON, import anytime, or reset with one click.
+
+---
+
+## Data Provenance & Demonstration Architecture
+
+### Data Provenance
+The opportunity catalog and sample candidate profiles in Beyond the Title are **curated, structured demonstration datasets** modeled directly on authentic competency frameworks, job descriptions, and role requirements from product-led companies. It does **not** rely on live job board scraping or external commercial APIs.
+
+### Architectural Rationale
+1. **Deterministic Auditability:** Unlike stochastic black-box recommendation models or brittle third-party scraping APIs that suffer from breaking schema changes, a curated catalog enables transparent, verifiable evaluation of every matching pass.
+2. **Zero-Tracking & Candidate Privacy:** Running purely on client-side `localStorage` ensures zero external telemetry, zero tracking cookies, and zero costs.
+3. **Protection & Transparency:** Every opportunity is explicitly flagged with `isDemoListing: true` alongside interface disclaimers clarifying that the application is a discovery sandbox and does not transmit applications to external employer portals.
+4. **Multidirectional Alignment Testing:** The dataset includes 18 roles specifically calibrated across Primary targets, Adjacent pivots, and Creative/Hobby exploration pathways to test non-linear career discovery.
 
 ---
 
