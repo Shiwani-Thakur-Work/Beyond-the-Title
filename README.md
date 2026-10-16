@@ -46,6 +46,17 @@ The opportunity catalog and sample candidate profiles in Beyond the Title are **
 
 ---
 
+## Owner Administrative Access & Live Opportunities
+
+To enable the transition from benchmark demonstration listings to real-world live opportunities while strictly preventing public tampering:
+
+- **Strict Visitor Isolation:** Standard visitors only have read-only matching and exploration access within their private browser session. They **cannot** edit, modify, or delete opportunities in the master catalogue.
+- **Passcode-Protected Owner Portal:** A dedicated administrative interface accessible via the lock icon in the navigation bar. Unlocking requires the secret Owner Passcode (default: `beyond2026`, configurable in owner settings).
+- **Live Opportunity Management:** The owner can publish active job openings with official application links (`applyUrl`), custom requirements, and multi-pathway tags.
+- **Git Synchronization:** Includes an **Export JSON** utility that outputs formatted `opportunities.json` to commit and deploy directly to GitHub Pages for all users.
+
+---
+
 ## Tech Stack
 
 - **Frontend:** React 19, TypeScript, Vite 8

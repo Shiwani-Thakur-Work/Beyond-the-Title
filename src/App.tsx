@@ -10,13 +10,24 @@ import { ProfilePreview } from './components/ProfilePreview';
 import { SavedOpportunitiesView } from './components/SavedOpportunitiesView';
 import { MethodologyView } from './components/MethodologyView';
 import { RecruiterView } from './components/RecruiterView';
+import { AdminOpportunitiesView } from './components/AdminOpportunitiesView';
+import { OwnerAuthModal } from './components/OwnerAuthModal';
 import { OpportunityDetailModal } from './components/OpportunityDetailModal';
 import { DataResetModal } from './components/DataResetModal';
 import { Compass, ShieldCheck } from 'lucide-react';
 
 export function App() {
-  const [activeTab, setActiveTab] = useState<'feed' | 'saved' | 'profile' | 'methodology' | 'recruiter'>('feed');
+  const [activeTab, setActiveTab] = useState<'feed' | 'saved' | 'profile' | 'methodology' | 'recruiter' | 'admin'>('feed');
   const [profileViewMode, setProfileViewMode] = useState<'builder' | 'preview'>('builder');
+
+  // Owner Authentication State
+  const [isOwnerAuth, setIsOwnerAuth] = useState<boolean>(() => storageService.isOwnerAuthenticated());
+  const [isOwnerAuthModalOpen, setIsOwnerAuthModalOpen] = useState(false);
+
+  // Core Opportunities State (Effective merged catalogue: base static + owner live additions/edits)
+  const [opportunities, setOpportunities] = useState<Opportunity[]>(() =>
+    storageService.getEffectiveOpportunities(opportunitiesData as Opportunity[])
+  );
 
   // Core Data State
   const [profile, setProfile] = useState<CandidateProfile>(() => storageService.getProfile());
@@ -25,7 +36,15 @@ export function App() {
   const [selectedOpportunity, setSelectedOpportunity] = useState<Opportunity | null>(null);
   const [isResetModalOpen, setIsResetModalOpen] = useState(false);
 
-  const opportunities: Opportunity[] = opportunitiesData as Opportunity[];
+  const handleRefreshOpportunities = () => {
+    setOpportunities(storageService.getEffectiveOpportunities(opportunitiesData as Opportunity[]));
+  };
+
+  const handleExitOwnerMode = () => {
+    storageService.logoutOwner();
+    setIsOwnerAuth(false);
+    setActiveTab('feed');
+  };
 
   // Deterministic matching computed across all opportunities whenever profile changes
   const matchesMap = useMemo(() => {
@@ -99,6 +118,14 @@ export function App() {
         setActiveTab={setActiveTab}
         savedCount={savedItems.length}
         onResetData={() => setIsResetModalOpen(true)}
+        isOwnerAuth={isOwnerAuth}
+        onOpenOwnerAuth={() => {
+          if (isOwnerAuth) {
+            setActiveTab('admin');
+          } else {
+            setIsOwnerAuthModalOpen(true);
+          }
+        }}
       />
 
       {/* Main Content Area */}
@@ -191,6 +218,32 @@ export function App() {
         )}
 
         {activeTab === 'methodology' && <MethodologyView />}
+
+        {activeTab === 'admin' && (
+          isOwnerAuth ? (
+            <AdminOpportunitiesView
+              opportunities={opportunities}
+              onRefreshOpportunities={handleRefreshOpportunities}
+              onExitOwnerMode={handleExitOwnerMode}
+            />
+          ) : (
+            <div className="max-w-md mx-auto py-20 px-4 text-center space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-200 text-indigo-600 flex items-center justify-center mx-auto">
+                <Compass className="w-6 h-6" />
+              </div>
+              <h2 className="text-xl font-bold text-slate-900">Owner Access Required</h2>
+              <p className="text-xs text-slate-600 max-w-sm mx-auto">
+                Live opportunity publishing and editing is restricted exclusively to the platform owner.
+              </p>
+              <button
+                onClick={() => setIsOwnerAuthModalOpen(true)}
+                className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold shadow-xs transition-colors"
+              >
+                Authenticate with Owner Passcode
+              </button>
+            </div>
+          )
+        )}
       </main>
 
       {/* Opportunity Detail Modal */}
@@ -205,6 +258,17 @@ export function App() {
           onClose={() => setSelectedOpportunity(null)}
         />
       )}
+
+      {/* Owner Authentication Modal */}
+      <OwnerAuthModal
+        isOpen={isOwnerAuthModalOpen}
+        onSuccess={() => {
+          setIsOwnerAuth(true);
+          setIsOwnerAuthModalOpen(false);
+          setActiveTab('admin');
+        }}
+        onClose={() => setIsOwnerAuthModalOpen(false)}
+      />
 
       {/* Data Management Modal */}
       <DataResetModal

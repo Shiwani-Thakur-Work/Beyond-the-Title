@@ -128,17 +128,30 @@ export interface Opportunity {
   preferredSkillTags: string[];
   /** Non-negotiable prerequisite experience criteria */
   mustHaves: string[];
-  /**
-   * Creative or personal hobbies that have direct synergy with this role
-   * (e.g. "Voiceover & Audio Narration", "Technical Illustration & Diagrams").
-   */
+  /** Creative or personal hobbies that have direct synergy with this role */
   hobbyInterests?: string[];
   /** Primary pathway classification for discovery organization */
   pathwayCategory?: 'primary' | 'adjacent' | 'hobby' | 'hybrid';
-  /** Source label indicating demonstration data provenance */
+  /** Source label indicating demonstration or live data provenance */
   sourceLabel: string;
   /** Explicit demonstration flag confirming listing is for testing and simulation */
   demoOnly: boolean;
+  /** Direct live application or official careers portal URL */
+  applyUrl?: string;
+  /** Indicates whether this is a real-world verified live job opening */
+  isLive?: boolean;
+  /** Active listing lifecycle status */
+  status?: 'active' | 'archived';
+}
+
+/**
+ * Owner administration session state.
+ */
+export interface OwnerSession {
+  /** Whether the owner passcode has been verified */
+  isAuthenticated: boolean;
+  /** Timestamp when authenticated */
+  authenticatedAt?: string;
 }
 
 /**

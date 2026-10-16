@@ -100,6 +100,14 @@ export const OpportunityCard: React.FC<OpportunityCardProps> = ({
               {opportunity.organisationLabel}
             </span>
 
+            {/* Live Status Badge */}
+            {opportunity.isLive && (
+              <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                Live Role
+              </span>
+            )}
+
             {/* Pathway Tag */}
             {match.isHobbyFit ? (
               <span className="text-[10px] uppercase font-bold tracking-wider text-purple-700 bg-purple-50 px-2 py-0.5 rounded-md border border-purple-200 flex items-center gap-1">

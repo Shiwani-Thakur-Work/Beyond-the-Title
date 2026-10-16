@@ -31,6 +31,7 @@ import {
   HelpCircle,
   ShieldAlert,
   Info,
+  ExternalLink,
 } from 'lucide-react';
 
 /**
@@ -447,7 +448,7 @@ export const OpportunityDetailModal: React.FC<OpportunityDetailModalProps> = ({
         </div>
 
         {/* Modal Bottom Bar */}
-        <div className="p-4 sm:p-5 bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-3">
+        <div className="p-4 sm:p-5 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
           <button
             type="button"
             onClick={onToggleSave}
@@ -461,13 +462,27 @@ export const OpportunityDetailModal: React.FC<OpportunityDetailModalProps> = ({
             {isSaved ? 'Saved in Opportunities' : 'Save for Later'}
           </button>
 
-          <button
-            type="button"
-            onClick={onClose}
-            className="px-5 py-2 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition-colors"
-          >
-            Done
-          </button>
+          <div className="flex items-center gap-2">
+            {opportunity.applyUrl && (
+              <a
+                href={opportunity.applyUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-xs transition-colors flex items-center gap-1.5"
+              >
+                Apply on Official Site
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            )}
+
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-5 py-2 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition-colors"
+            >
+              Done
+            </button>
+          </div>
         </div>
       </div>
     </div>

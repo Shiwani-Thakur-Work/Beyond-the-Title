@@ -11,7 +11,7 @@
  *   profiles alongside persistent custom profile creation and JSON export/import.
  */
 
-import type { CandidateProfile, SavedOpportunity, RelevanceFeedback } from '../types';
+import type { CandidateProfile, SavedOpportunity, RelevanceFeedback, Opportunity } from '../types';
 import { SAMPLE_PROFILES } from '../data/sampleProfiles';
 
 /** Storage key for the actively loaded candidate profile */
@@ -25,6 +25,21 @@ const SAVED_OPPORTUNITIES_KEY = 'beyond_the_title_saved_opps_v1';
 
 /** Storage key for candidate relevance evaluation feedback */
 const FEEDBACK_KEY = 'beyond_the_title_feedback_v1';
+
+/** Storage key for owner-managed live opportunities */
+const LIVE_OPPORTUNITIES_OVERRIDE_KEY = 'beyond_the_title_live_opps_v1';
+
+/** Storage key for deleted opportunity IDs */
+const DELETED_OPPORTUNITIES_KEY = 'beyond_the_title_deleted_opps_v1';
+
+/** Storage key for custom owner passcode */
+const OWNER_PASSCODE_KEY = 'beyond_the_title_owner_passcode_v1';
+
+/** Default owner passcode for administrative management */
+export const DEFAULT_OWNER_PASSCODE = 'beyond2026';
+
+/** Session storage key tracking authenticated owner status in current tab */
+const OWNER_SESSION_KEY = 'beyond_the_title_owner_session_v1';
 
 /**
  * Generates an empty candidate profile schema with default settings.
@@ -334,5 +349,203 @@ export const storageService = {
       console.error('Failed to parse and import data:', e);
       return false;
     }
+  },
+
+  // ==========================================
+  // Owner Authentication & Access Control
+  // ==========================================
+
+  /**
+   * Verifies the provided passcode against the stored owner passcode or default.
+   * If valid, initializes an authenticated owner session for the current browser tab.
+   *
+   * @param passcode - Candidate passcode entered by the user.
+   * @returns True if authentication succeeded; false otherwise.
+   */
+  verifyOwnerPasscode(passcode: string): boolean {
+    const activePasscode = localStorage.getItem(OWNER_PASSCODE_KEY) || DEFAULT_OWNER_PASSCODE;
+    if (passcode.trim() === activePasscode.trim()) {
+      try {
+        sessionStorage.setItem(OWNER_SESSION_KEY, 'true');
+      } catch (e) {
+        console.error('Session storage error:', e);
+      }
+      return true;
+    }
+    return false;
+  },
+
+  /**
+   * Checks whether the current user session holds verified owner administrative privileges.
+   *
+   * @returns True if owner session is authenticated.
+   */
+  isOwnerAuthenticated(): boolean {
+    try {
+      return sessionStorage.getItem(OWNER_SESSION_KEY) === 'true';
+    } catch {
+      return false;
+    }
+  },
+
+  /**
+   * Terminates the current owner session, locking administrative controls.
+   */
+  logoutOwner(): void {
+    try {
+      sessionStorage.removeItem(OWNER_SESSION_KEY);
+    } catch (e) {
+      console.error('Session storage logout error:', e);
+    }
+  },
+
+  /**
+   * Updates the owner passcode in localStorage.
+   *
+   * @param newPasscode - New secret passcode.
+   */
+  changeOwnerPasscode(newPasscode: string): void {
+    if (!newPasscode || newPasscode.trim().length < 4) return;
+    localStorage.setItem(OWNER_PASSCODE_KEY, newPasscode.trim());
+  },
+
+  // ==========================================
+  // Live Opportunities Management
+  // ==========================================
+
+  /**
+   * Retrieves owner-authored live opportunities and modifications from localStorage.
+   *
+   * @returns Array of Opportunity records.
+   */
+  getLiveOpportunitiesOverrides(): Opportunity[] {
+    try {
+      const data = localStorage.getItem(LIVE_OPPORTUNITIES_OVERRIDE_KEY);
+      if (data) {
+        return JSON.parse(data) as Opportunity[];
+      }
+    } catch (e) {
+      console.error('Failed to load live opportunities overrides:', e);
+    }
+    return [];
+  },
+
+  /**
+   * Retrieves list of opportunity IDs deleted by the owner.
+   *
+   * @returns Set of deleted opportunity IDs.
+   */
+  getDeletedOpportunityIds(): string[] {
+    try {
+      const data = localStorage.getItem(DELETED_OPPORTUNITIES_KEY);
+      if (data) {
+        return JSON.parse(data) as string[];
+      }
+    } catch (e) {
+      console.error('Failed to load deleted opportunity IDs:', e);
+    }
+    return [];
+  },
+
+  /**
+   * Combines baseline bundled static opportunities with owner-authored live opportunities,
+   * updates, and deletions.
+   *
+   * @param baseOpportunities - The initial catalogue bundled in opportunities.json.
+   * @returns Merged array of active Opportunity items.
+   */
+  getEffectiveOpportunities(baseOpportunities: Opportunity[]): Opportunity[] {
+    const deletedIds = new Set(storageService.getDeletedOpportunityIds());
+    const overrides = storageService.getLiveOpportunitiesOverrides();
+
+    // Map overrides by ID
+    const overrideMap = new Map<string, Opportunity>();
+    for (const opp of overrides) {
+      overrideMap.set(opp.id, opp);
+    }
+
+    // Process base items: filter deleted, apply overrides if present
+    const result: Opportunity[] = [];
+    const processedIds = new Set<string>();
+
+    for (const base of baseOpportunities) {
+      if (deletedIds.has(base.id)) continue;
+      if (overrideMap.has(base.id)) {
+        result.push(overrideMap.get(base.id)!);
+      } else {
+        result.push(base);
+      }
+      processedIds.add(base.id);
+    }
+
+    // Append newly created owner opportunities not present in base
+    for (const override of overrides) {
+      if (!processedIds.has(override.id) && !deletedIds.has(override.id)) {
+        result.unshift(override);
+        processedIds.add(override.id);
+      }
+    }
+
+    return result;
+  },
+
+  /**
+   * Saves or updates a live opportunity in the owner overrides store.
+   *
+   * @param opportunity - The Opportunity record to persist.
+   */
+  saveLiveOpportunity(opportunity: Opportunity): void {
+    const overrides = storageService.getLiveOpportunitiesOverrides();
+    const idx = overrides.findIndex((o) => o.id === opportunity.id);
+
+    if (idx >= 0) {
+      overrides[idx] = opportunity;
+    } else {
+      overrides.push(opportunity);
+    }
+
+    try {
+      localStorage.setItem(LIVE_OPPORTUNITIES_OVERRIDE_KEY, JSON.stringify(overrides));
+
+      // Ensure it is removed from deleted IDs if previously soft-deleted
+      const deletedIds = storageService.getDeletedOpportunityIds();
+      const updatedDeleted = deletedIds.filter((id) => id !== opportunity.id);
+      localStorage.setItem(DELETED_OPPORTUNITIES_KEY, JSON.stringify(updatedDeleted));
+    } catch (e) {
+      console.error('Failed to save live opportunity:', e);
+    }
+  },
+
+  /**
+   * Removes an opportunity by marking its ID as deleted in the owner store.
+   *
+   * @param opportunityId - The target opportunity ID.
+   */
+  deleteLiveOpportunity(opportunityId: string): void {
+    // 1. Remove from overrides if present
+    const overrides = storageService.getLiveOpportunitiesOverrides().filter((o) => o.id !== opportunityId);
+    try {
+      localStorage.setItem(LIVE_OPPORTUNITIES_OVERRIDE_KEY, JSON.stringify(overrides));
+
+      // 2. Add to deleted IDs
+      const deletedIds = storageService.getDeletedOpportunityIds();
+      if (!deletedIds.includes(opportunityId)) {
+        deletedIds.push(opportunityId);
+        localStorage.setItem(DELETED_OPPORTUNITIES_KEY, JSON.stringify(deletedIds));
+      }
+    } catch (e) {
+      console.error('Failed to delete live opportunity:', e);
+    }
+  },
+
+  /**
+   * Serializes the entire active effective opportunities catalogue into formatted JSON
+   * so the owner can copy/commit directly to src/data/opportunities.json.
+   *
+   * @param opportunities - Full catalogue of active opportunities.
+   * @returns Pretty-printed JSON string.
+   */
+  exportMasterOpportunitiesJson(opportunities: Opportunity[]): string {
+    return JSON.stringify(opportunities, null, 2);
   },
 };

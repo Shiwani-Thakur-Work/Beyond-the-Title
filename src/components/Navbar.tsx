@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Compass, Bookmark, User, BookOpen, Eye, Trash2, ShieldCheck, Download, RefreshCw } from 'lucide-react';
+import { Compass, Bookmark, User, BookOpen, Eye, Trash2, ShieldCheck, Download, RefreshCw, Lock } from 'lucide-react';
 import { storageService } from '../services/storageService';
 
 interface NavbarProps {
-  activeTab: 'feed' | 'saved' | 'profile' | 'methodology' | 'recruiter';
-  setActiveTab: (tab: 'feed' | 'saved' | 'profile' | 'methodology' | 'recruiter') => void;
+  activeTab: 'feed' | 'saved' | 'profile' | 'methodology' | 'recruiter' | 'admin';
+  setActiveTab: (tab: 'feed' | 'saved' | 'profile' | 'methodology' | 'recruiter' | 'admin') => void;
   savedCount: number;
   onResetData: () => void;
+  isOwnerAuth: boolean;
+  onOpenOwnerAuth: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -14,6 +16,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   setActiveTab,
   savedCount,
   onResetData,
+  isOwnerAuth,
+  onOpenOwnerAuth,
 }) => {
   const [showDataMenu, setShowDataMenu] = useState(false);
 
@@ -125,6 +129,22 @@ export const Navbar: React.FC<NavbarProps> = ({
               <BookOpen className="w-4 h-4" />
               <span className="hidden lg:inline">Methodology</span>
             </button>
+
+            {/* Owner Admin Tab - Only visible when owner is authenticated */}
+            {isOwnerAuth && (
+              <button
+                id="nav-admin-btn"
+                onClick={() => setActiveTab('admin')}
+                className={`px-3 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-1.5 ${
+                  activeTab === 'admin'
+                    ? 'bg-emerald-600 text-white shadow-xs'
+                    : 'text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200'
+                }`}
+              >
+                <ShieldCheck className="w-4 h-4" />
+                <span>Live Admin</span>
+              </button>
+            )}
           </nav>
 
           {/* Right Privacy & Data Controls */}
@@ -133,6 +153,20 @@ export const Navbar: React.FC<NavbarProps> = ({
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
               <span>Private • Stored Locally</span>
             </div>
+
+            {/* Owner Portal Shortcut */}
+            <button
+              onClick={onOpenOwnerAuth}
+              className={`p-2 rounded-lg transition-colors flex items-center gap-1 text-xs font-semibold ${
+                isOwnerAuth
+                  ? 'text-emerald-700 hover:bg-emerald-50 bg-emerald-50/50 border border-emerald-200'
+                  : 'text-slate-500 hover:text-slate-800 hover:bg-slate-100'
+              }`}
+              title={isOwnerAuth ? 'Owner Admin Mode Active' : 'Owner Portal Login'}
+              aria-label="Owner Portal"
+            >
+              <Lock className={`w-4 h-4 ${isOwnerAuth ? 'text-emerald-600' : 'text-slate-400'}`} />
+            </button>
 
             <div className="relative">
               <button
@@ -156,6 +190,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                   >
                     <Download className="w-4 h-4 text-slate-500" />
                     Export Data (JSON)
+                  </button>
+                  <button
+                    onClick={() => {
+                      setShowDataMenu(false);
+                      onOpenOwnerAuth();
+                    }}
+                    className="w-full text-left px-4 py-2 hover:bg-indigo-50 text-indigo-700 flex items-center gap-2 font-medium"
+                  >
+                    <Lock className="w-4 h-4 text-indigo-500" />
+                    {isOwnerAuth ? 'Open Live Admin' : 'Owner Portal (Passcode)'}
                   </button>
                   <button
                     onClick={() => {
