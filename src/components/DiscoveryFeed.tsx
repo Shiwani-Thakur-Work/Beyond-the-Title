@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import type { Opportunity, MatchAnalysis, SavedOpportunity, RelevanceFeedback, CandidateProfile, PathwayFilter } from '../types';
 import { OpportunityCard } from './OpportunityCard';
 import { SAMPLE_PROFILES } from '../data/sampleProfiles';
+import { storageService } from '../services/storageService';
 import {
   Search,
   Filter,
@@ -216,9 +217,7 @@ export const DiscoveryFeed: React.FC<DiscoveryFeedProps> = ({
                 id="quick-profile-switch"
                 value={activePreset ? activePreset.id : 'custom'}
                 onChange={(e) => {
-                  if (e.target.value !== 'custom') {
-                    onSelectPresetProfile(e.target.value);
-                  }
+                  onSelectPresetProfile(e.target.value);
                 }}
                 className="w-full sm:w-64 px-3 py-2 text-xs font-medium bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:border-indigo-500 shadow-xs text-slate-800"
               >
@@ -227,7 +226,11 @@ export const DiscoveryFeed: React.FC<DiscoveryFeedProps> = ({
                     {sample.shortName} ({sample.tagline.split('•')[0].trim()})
                   </option>
                 ))}
-                {!activePreset && <option value="custom">Custom Profile (Edited)</option>}
+                <option value="custom">
+                  {storageService.hasCustomProfile()
+                    ? `👤 ${storageService.getCustomProfile()?.name || 'My Custom Profile'} (Saved)`
+                    : `👤 Custom Profile (${profile.name || 'Current'})`}
+                </option>
               </select>
             </div>
 

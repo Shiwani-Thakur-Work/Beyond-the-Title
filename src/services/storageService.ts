@@ -2,11 +2,12 @@ import type { CandidateProfile, SavedOpportunity, RelevanceFeedback } from '../t
 import { SAMPLE_PROFILES } from '../data/sampleProfiles';
 
 const PROFILE_KEY = 'beyond_the_title_profile_v1';
+const CUSTOM_PROFILE_KEY = 'beyond_the_title_custom_profile_v1';
 const SAVED_OPPORTUNITIES_KEY = 'beyond_the_title_saved_opps_v1';
 const FEEDBACK_KEY = 'beyond_the_title_feedback_v1';
 
 export const createBlankProfile = (): CandidateProfile => ({
-  id: `profile-${Date.now()}`,
+  id: `profile-custom-${Date.now()}`,
   name: '',
   titleHeadline: '',
   primaryRole: '',
@@ -39,9 +40,40 @@ export const storageService = {
     try {
       const updated = { ...profile, updatedAt: new Date().toISOString() };
       localStorage.setItem(PROFILE_KEY, JSON.stringify(updated));
+
+      // If it's a custom or modified profile, preserve it in CUSTOM_PROFILE_KEY as well
+      const isPreset = SAMPLE_PROFILES.some((p) => p.profile.id === profile.id && p.profile.name === profile.name);
+      if (!isPreset && profile.name.trim() !== '') {
+        localStorage.setItem(CUSTOM_PROFILE_KEY, JSON.stringify(updated));
+      }
     } catch (e) {
       console.error('Failed to save profile to localStorage:', e);
     }
+  },
+
+  getCustomProfile(): CandidateProfile | null {
+    try {
+      const data = localStorage.getItem(CUSTOM_PROFILE_KEY);
+      if (data) {
+        return JSON.parse(data) as CandidateProfile;
+      }
+    } catch (e) {
+      console.error('Failed to get custom profile:', e);
+    }
+    return null;
+  },
+
+  hasCustomProfile(): boolean {
+    return Boolean(localStorage.getItem(CUSTOM_PROFILE_KEY));
+  },
+
+  loadCustomProfile(): CandidateProfile | null {
+    const custom = storageService.getCustomProfile();
+    if (custom) {
+      storageService.saveProfile(custom);
+      return custom;
+    }
+    return null;
   },
 
   resetProfileToBlank(): CandidateProfile {
@@ -59,6 +91,13 @@ export const storageService = {
   },
 
   loadProfileById(profileId: string): CandidateProfile {
+    if (profileId === 'custom') {
+      const custom = storageService.getCustomProfile();
+      if (custom) {
+        storageService.saveProfile(custom);
+        return custom;
+      }
+    }
     const found = SAMPLE_PROFILES.find((p) => p.id === profileId || p.profile.id === profileId);
     const target = found?.profile || SAMPLE_PROFILES[0].profile;
     const cloned = JSON.parse(JSON.stringify(target));

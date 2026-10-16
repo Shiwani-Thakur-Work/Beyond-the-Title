@@ -171,6 +171,7 @@ export function App() {
                 onUpdateProfile={handleUpdateProfile}
                 onViewPreview={() => setProfileViewMode('preview')}
                 onResetToBlank={handleResetToBlank}
+                onExploreFeed={() => setActiveTab('feed')}
               />
             ) : (
               <ProfilePreview

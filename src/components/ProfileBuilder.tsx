@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import type { CandidateProfile, CapabilityEntry, EvidenceType, SeniorityLevel } from '../types';
 import { ROLE_TAXONOMY, CREATIVE_INTEREST_SUGGESTIONS } from '../data/taxonomy';
 import { SAMPLE_PROFILES } from '../data/sampleProfiles';
-import { Plus, X, Sparkles, Briefcase, FolderGit2, GraduationCap, Heart, CheckCircle2, RotateCcw } from 'lucide-react';
+import { Plus, X, Sparkles, Briefcase, FolderGit2, GraduationCap, Heart, CheckCircle2, RotateCcw, ArrowRight } from 'lucide-react';
 
 interface ProfileBuilderProps {
   profile: CandidateProfile;
   onUpdateProfile: (updated: CandidateProfile) => void;
   onViewPreview: () => void;
   onResetToBlank: () => void;
+  onExploreFeed?: () => void;
 }
 
 export const ProfileBuilder: React.FC<ProfileBuilderProps> = ({
@@ -16,6 +17,7 @@ export const ProfileBuilder: React.FC<ProfileBuilderProps> = ({
   onUpdateProfile,
   onViewPreview,
   onResetToBlank,
+  onExploreFeed,
 }) => {
   const [name, setName] = useState(profile.name || '');
   const [headline, setHeadline] = useState(profile.titleHeadline || '');
@@ -254,20 +256,35 @@ export const ProfileBuilder: React.FC<ProfileBuilderProps> = ({
 
             <select
               id="primary-role-select"
-              value={primaryRole}
+              value={ROLE_TAXONOMY.some((r) => r.role === primaryRole) ? primaryRole : (primaryRole ? 'custom' : '')}
               onChange={(e) => {
-                setPrimaryRole(e.target.value);
-                onUpdateProfile({ ...profile, primaryRole: e.target.value });
+                if (e.target.value !== 'custom') {
+                  setPrimaryRole(e.target.value);
+                  onUpdateProfile({ ...profile, primaryRole: e.target.value });
+                }
               }}
-              className="w-full px-3 py-2.5 text-sm bg-white border border-indigo-200 rounded-lg font-medium text-slate-900 focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600"
+              className="w-full px-3 py-2.5 text-sm bg-white border border-indigo-200 rounded-lg font-medium text-slate-900 focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 mb-2"
             >
-              <option value="">-- Select a primary role --</option>
+              <option value="">-- Select a primary role from common taxonomy --</option>
               {ROLE_TAXONOMY.map((item) => (
                 <option key={item.role} value={item.role}>
                   {item.role} ({item.family})
                 </option>
               ))}
+              <option value="custom">-- Or type a custom target role below --</option>
             </select>
+
+            <input
+              id="cand-custom-primary-role"
+              type="text"
+              value={primaryRole}
+              onChange={(e) => {
+                setPrimaryRole(e.target.value);
+                onUpdateProfile({ ...profile, primaryRole: e.target.value });
+              }}
+              placeholder="Or type any custom target role (e.g. Solutions Architect, UX Researcher, Technical Writer)..."
+              className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:border-indigo-500"
+            />
           </div>
         </section>
 
@@ -701,20 +718,33 @@ export const ProfileBuilder: React.FC<ProfileBuilderProps> = ({
             )}
           </div>
 
-          <div className="flex items-center gap-3 w-full sm:w-auto">
+          <div className="flex flex-wrap items-center gap-2.5 w-full sm:w-auto">
             <button
               type="button"
               onClick={handleSave}
-              className="flex-1 sm:flex-none px-5 py-2.5 bg-slate-900 text-white text-sm font-semibold rounded-xl hover:bg-slate-800 transition-colors shadow-sm"
+              className="flex-1 sm:flex-none px-4 py-2.5 bg-slate-900 text-white text-xs sm:text-sm font-semibold rounded-xl hover:bg-slate-800 transition-colors shadow-sm"
             >
               Save Profile
             </button>
+            {onExploreFeed && (
+              <button
+                type="button"
+                onClick={() => {
+                  handleSave();
+                  onExploreFeed();
+                }}
+                className="flex-1 sm:flex-none px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-bold rounded-xl transition-colors shadow-sm flex items-center justify-center gap-1.5"
+              >
+                <span>Save & Explore Feed</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            )}
             <button
               type="button"
               onClick={onViewPreview}
-              className="flex-1 sm:flex-none px-5 py-2.5 bg-indigo-50 text-indigo-700 border border-indigo-200 text-sm font-semibold rounded-xl hover:bg-indigo-100 transition-colors"
+              className="flex-1 sm:flex-none px-4 py-2.5 bg-indigo-50 text-indigo-700 border border-indigo-200 text-xs sm:text-sm font-semibold rounded-xl hover:bg-indigo-100 transition-colors"
             >
-              Preview Structured Profile
+              Preview
             </button>
           </div>
         </div>
